@@ -4,8 +4,10 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-namespace SlimUI.ModernMenu{
-	public class UIMenuManager : MonoBehaviour {
+namespace SlimUI.ModernMenu
+{
+	public class UIMenuManager : MonoBehaviour
+	{
 		private Animator CameraObject;
 
 		// campaign button sub menu
@@ -21,7 +23,7 @@ namespace SlimUI.ModernMenu{
         [Tooltip("Optional 4th Menu")]
         public GameObject extrasMenu;
 
-        public enum Theme {custom1, custom2, custom3};
+        public enum Theme {custom1, custom2, custom3, custom4};
         [Header("THEME SETTINGS")]
         public Theme theme;
         private int themeIndex;
@@ -80,7 +82,8 @@ namespace SlimUI.ModernMenu{
         [Tooltip("The GameObject holding the Audio Source component for the SWOOSH SOUND when switching to the Settings Screen")]
         public AudioSource swooshSound;
 
-		void Start(){
+		void Start()
+		{
 			CameraObject = transform.GetComponent<Animator>();
 
 			playMenu.SetActive(false);
@@ -111,52 +114,65 @@ namespace SlimUI.ModernMenu{
 					themeController.textColor = themeController.custom3.text3;
 					themeIndex = 2;
 					break;
+				case Theme.custom4:
+					themeController.currentColor = themeController.custom4.graphic4;
+					themeController.textColor = themeController.custom4.text4;
+					themeIndex = 3;
+					break;
 				default:
 					Debug.Log("Invalid theme selected.");
 					break;
 			}
 		}
 
-		public void PlayCampaign(){
+		public void PlayCampaign()
+		{
 			exitMenu.SetActive(false);
 			if(extrasMenu) extrasMenu.SetActive(false);
 			playMenu.SetActive(true);
 		}
 		
-		public void PlayCampaignMobile(){
+		public void PlayCampaignMobile()
+		{
 			exitMenu.SetActive(false);
 			if(extrasMenu) extrasMenu.SetActive(false);
 			playMenu.SetActive(true);
 			mainMenu.SetActive(false);
 		}
 
-		public void ReturnMenu(){
+		public void ReturnMenu()
+		{
 			playMenu.SetActive(false);
 			if(extrasMenu) extrasMenu.SetActive(false);
 			exitMenu.SetActive(false);
 			mainMenu.SetActive(true);
 		}
 
-		public void LoadScene(string scene){
+		public void LoadScene(string scene)
+		{
 			if(scene != ""){
 				StartCoroutine(LoadAsynchronously(scene));
 			}
 		}
 
-		public void  DisablePlayCampaign(){
+		public void  DisablePlayCampaign()
+		{
 			playMenu.SetActive(false);
 		}
 
-		public void Position2(){
+		public void Position2()
+		{
 			DisablePlayCampaign();
 			CameraObject.SetFloat("Animate",1);
 		}
 
-		public void Position1(){
+		public void Position1()
+		{
 			CameraObject.SetFloat("Animate",0);
 		}
 
-		void DisablePanels(){
+		void DisablePanels()
+		{
 			PanelControls.SetActive(false);
 			PanelVideo.SetActive(false);
 			PanelGame.SetActive(false);
@@ -175,85 +191,99 @@ namespace SlimUI.ModernMenu{
 			lineGeneral.SetActive(false);
 		}
 
-		public void GamePanel(){
+		public void GamePanel()
+		{
 			DisablePanels();
 			PanelGame.SetActive(true);
 			lineGame.SetActive(true);
 		}
 
-		public void VideoPanel(){
+		public void VideoPanel()
+		{
 			DisablePanels();
 			PanelVideo.SetActive(true);
 			lineVideo.SetActive(true);
 		}
 
-		public void ControlsPanel(){
+		public void ControlsPanel()
+		{
 			DisablePanels();
 			PanelControls.SetActive(true);
 			lineControls.SetActive(true);
 		}
 
-		public void KeyBindingsPanel(){
+		public void KeyBindingsPanel()
+		{
 			DisablePanels();
 			MovementPanel();
 			PanelKeyBindings.SetActive(true);
 			lineKeyBindings.SetActive(true);
 		}
 
-		public void MovementPanel(){
+		public void MovementPanel()
+		{
 			DisablePanels();
 			PanelKeyBindings.SetActive(true);
 			PanelMovement.SetActive(true);
 			lineMovement.SetActive(true);
 		}
 
-		public void CombatPanel(){
+		public void CombatPanel()
+		{
 			DisablePanels();
 			PanelKeyBindings.SetActive(true);
 			PanelCombat.SetActive(true);
 			lineCombat.SetActive(true);
 		}
 
-		public void GeneralPanel(){
+		public void GeneralPanel()
+		{
 			DisablePanels();
 			PanelKeyBindings.SetActive(true);
 			PanelGeneral.SetActive(true);
 			lineGeneral.SetActive(true);
 		}
 
-		public void PlayHover(){
+		public void PlayHover()
+		{
 			hoverSound.Play();
 		}
 
-		public void PlaySFXHover(){
+		public void PlaySFXHover()
+		{
 			sliderSound.Play();
 		}
 
-		public void PlaySwoosh(){
+		public void PlaySwoosh()
+		{
 			swooshSound.Play();
 		}
 
 		// Are You Sure - Quit Panel Pop Up
-		public void AreYouSure(){
+		public void AreYouSure()
+		{
 			exitMenu.SetActive(true);
 			if(extrasMenu) extrasMenu.SetActive(false);
 			DisablePlayCampaign();
 		}
 
-		public void AreYouSureMobile(){
+		public void AreYouSureMobile()
+		{
 			exitMenu.SetActive(true);
 			if(extrasMenu) extrasMenu.SetActive(false);
 			mainMenu.SetActive(false);
 			DisablePlayCampaign();
 		}
 
-		public void ExtrasMenu(){
+		public void ExtrasMenu()
+		{
 			playMenu.SetActive(false);
 			if(extrasMenu) extrasMenu.SetActive(true);
 			exitMenu.SetActive(false);
 		}
 
-		public void QuitGame(){
+		public void QuitGame()
+		{
 			#if UNITY_EDITOR
 				UnityEditor.EditorApplication.isPlaying = false;
 			#else
@@ -262,24 +292,30 @@ namespace SlimUI.ModernMenu{
 		}
 
 		// Load Bar synching animation
-		IEnumerator LoadAsynchronously(string sceneName){ // scene name is just the name of the current scene being loaded
+		IEnumerator LoadAsynchronously(string sceneName)
+		{ // scene name is just the name of the current scene being loaded
 			AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
 			operation.allowSceneActivation = false;
 			mainCanvas.SetActive(false);
 			loadingMenu.SetActive(true);
 
-			while (!operation.isDone){
+			while (!operation.isDone)
+			{
 				float progress = Mathf.Clamp01(operation.progress / .95f);
 				loadingBar.value = progress;
 
-				if (operation.progress >= 0.9f && waitForInput){
+				if (operation.progress >= 0.9f && waitForInput)
+				{
 					loadPromptText.text = "Press " + userPromptKey.ToString().ToUpper() + " to continue";
 					loadingBar.value = 1;
 
-					if (Input.GetKeyDown(userPromptKey)){
+					if (Input.GetKeyDown(userPromptKey))
+					{
 						operation.allowSceneActivation = true;
 					}
-                }else if(operation.progress >= 0.9f && !waitForInput){
+                }
+				else if(operation.progress >= 0.9f && !waitForInput)
+				{
 					operation.allowSceneActivation = true;
 				}
 
