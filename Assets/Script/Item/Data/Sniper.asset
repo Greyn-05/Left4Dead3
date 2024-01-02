@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75a7c6468246610438ce829150273fe9, type: 3}
+  m_Name: Sniper
+  m_EditorClassIdentifier: 
+  gunName: "\uC800\uACA9\uCD1D"
+  description: "\uD55C\uBC1C \uD55C\uBC1C\uC774 \uAC15\uB825\uD55C \uCD1D"
+  gunType: 3
+  icon: {fileID: 0}
+  dropPrefab: {fileID: 919132149155446097, guid: db5ef47b9b5631844bab1e1c50f5a988, type: 3}
+  nowLoadedBullet: 0
+  maxBulletAmount: 12
