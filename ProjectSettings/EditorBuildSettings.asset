@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Test/Seyeon_Start.unity
     guid: 4a41b8586ea552a40938edcf29320b60
   - enabled: 1
-    path: Assets/Scenes/Test/Seyeon_SettingAndUI.unity
+    path: Assets/Scenes/Test/Seyeon_UI.unity
     guid: 5534beea7a66a47489694f6e9363e12b
   m_configObjects: {}
