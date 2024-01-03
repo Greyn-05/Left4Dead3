@@ -89,14 +89,14 @@ namespace SlimUI.ModernMenu
 			}
 
 			// check hud value
-			if(PlayerPrefs.GetInt("ShowHUD")==0)
-			{
-				showhudtext.GetComponent<TMP_Text>().text = "off";
-			}
-			else
-			{
-				showhudtext.GetComponent<TMP_Text>().text = "on";
-			}
+			// if(PlayerPrefs.GetInt("ShowHUD")==0)
+			// {
+			// 	showhudtext.GetComponent<TMP_Text>().text = "off";
+			// }
+			// else
+			// {
+			// 	showhudtext.GetComponent<TMP_Text>().text = "on";
+			// }
 
 			// check tool tip value
 			if(PlayerPrefs.GetInt("ToolTips")==0)
