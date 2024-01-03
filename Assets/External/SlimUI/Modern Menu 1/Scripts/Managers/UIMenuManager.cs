@@ -39,6 +39,8 @@ namespace SlimUI.ModernMenu
         [Tooltip("The UI Panel that holds the GAME window tab")]
         public GameObject PanelGame;
         [Tooltip("The UI Panel that holds the KEY BINDINGS window tab")]
+		public GameObject PanelCrossHair;
+		[Tooltip("The UI Panel that holds the CROSSHAIR tab")]
         public GameObject PanelKeyBindings;
         [Tooltip("The UI Sub-Panel under KEY BINDINGS for MOVEMENT")]
         public GameObject PanelMovement;
@@ -57,6 +59,8 @@ namespace SlimUI.ModernMenu
         [Tooltip("Highlight Image for when CONTROLS Tab is selected in Settings")]
         public GameObject lineControls;
         [Tooltip("Highlight Image for when KEY BINDINGS Tab is selected in Settings")]
+		public GameObject lineCrossHair;
+		[Tooltip("Highlight Image for when CROSSHAIR Tab is selected in Settings")]
         public GameObject lineKeyBindings;
         [Tooltip("Highlight Image for when MOVEMENT Sub-Tab is selected in KEY BINDINGS")]
         public GameObject lineMovement;
@@ -176,12 +180,14 @@ namespace SlimUI.ModernMenu
 			PanelControls.SetActive(false);
 			PanelVideo.SetActive(false);
 			PanelGame.SetActive(false);
+			PanelCrossHair.SetActive(false);
 			PanelKeyBindings.SetActive(false);
 
 			lineGame.SetActive(false);
 			lineControls.SetActive(false);
 			lineVideo.SetActive(false);
 			lineKeyBindings.SetActive(false);
+			lineCrossHair.SetActive(false);
 
 			PanelMovement.SetActive(false);
 			lineMovement.SetActive(false);
@@ -210,6 +216,13 @@ namespace SlimUI.ModernMenu
 			DisablePanels();
 			PanelControls.SetActive(true);
 			lineControls.SetActive(true);
+		}
+
+		public void CrossHairPanel()
+		{
+			DisablePanels();
+			PanelCrossHair.SetActive(true);
+			lineCrossHair.SetActive(true);
 		}
 
 		public void KeyBindingsPanel()
