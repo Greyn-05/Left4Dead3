@@ -265,7 +265,6 @@ MonoBehaviour:
   m_speed: 3
   m_keyF: 102
   m_keySpace: 32
-  m_keyShift: 304
 --- !u!143 &728311151
 CharacterController:
   m_ObjectHideFlags: 0

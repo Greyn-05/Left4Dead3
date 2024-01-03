@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour
 {
 
     [HideInInspector]
-    private PlayerController m_playerController;
+    private PlayerControl m_playerController;
     private PlayerAnimationManager m_animationManager;
     private ThirdPersonCamera m_tpCamera;
 
@@ -25,7 +25,7 @@ public class PlayerManager : MonoBehaviour
     {
         m_healthPoint = 100.0f;
 
-        m_playerController = GetComponent<PlayerController>();
+        m_playerController = GetComponent<PlayerControl>();
         m_tpCamera = GetComponent<ThirdPersonCamera>();
         m_animationManager = transform.GetChild(0).GetComponent<PlayerAnimationManager>();
 
