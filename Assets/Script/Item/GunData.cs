@@ -25,6 +25,8 @@ public class GunData : ScriptableObject
     public Sprite icon;
     public GameObject dropPrefab;
 
+    public GameObject equipPrefab;
+
     [Header("Stacking")]
     public int bulletInTheGun; //탄알집에 남아있는 탄알
     public int maxBulletInTheGun; //탄알집에 최대로 채울 수 있는 수
