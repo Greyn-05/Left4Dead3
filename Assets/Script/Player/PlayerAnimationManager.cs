@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class PlayerAnimationManager : MonoBehaviour
 {
@@ -20,12 +20,12 @@ public class PlayerAnimationManager : MonoBehaviour
         m_animator = GetComponent<Animator>();
     }
 
-    //Ä³¸¯ÅÍ »óÅÂ¿¡ µû¶ó ¾Ö´Ï¸ŞÀÌ¼Ç ÀüÈ¯ÇÏ´Â ÇÔ¼ö
+    //ìºë¦­í„° ìƒíƒœì— ë”°ë¼ ì• ë‹ˆë©”ì´ì…˜ ì „í™˜í•˜ëŠ” í•¨ìˆ˜
     public void UpdateAnimation(PlayerState state, float angle, float magnitude, bool isjumped, bool isground)
     {
         m_animator.SetFloat(InputAngle, angle);
         m_animator.SetFloat(InputMagnitude, magnitude);
-        if (isjumped) m_animator.SetTrigger(IsJumped);//Á¡ÇÁ Å°¸¦ ´­·¶À» ¶§ Æ®¸®°Å ¹ßµ¿
+        if (isjumped) m_animator.SetTrigger(IsJumped);//ì í”„ í‚¤ë¥¼ ëˆŒë €ì„ ë•Œ íŠ¸ë¦¬ê±° ë°œë™
         m_animator.SetBool(IsGrounded, isground);
 
         switch(state)

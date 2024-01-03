@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -11,9 +11,9 @@ public class PlayerControl : MonoBehaviour
     [HideInInspector]
     private CharacterController m_cc;
 
-    private float m_movementY = 0.0f;//Á¡ÇÁ±¸ÇöÀ» À§ÇØ Y¹æÇâÀº µû·Î 
-    private Vector3 m_movement;//Ä³¸¯ÅÍ Transform ±âÁØ ¿òÁ÷ÀÌ·Á´Â ¹æÇâ
-    private Vector3 m_movePosition;//World Transform ±âÁØ ¿òÁ÷ÀÌ°Ô ÇÏ·Á´Â ¹æÇâ
+    private float m_movementY = 0.0f;//ì í”„êµ¬í˜„ì„ ìœ„í•´ Yë°©í–¥ì€ ë”°ë¡œ 
+    private Vector3 m_movement;//ìºë¦­í„° Transform ê¸°ì¤€ ì›€ì§ì´ë ¤ëŠ” ë°©í–¥
+    private Vector3 m_movePosition;//World Transform ê¸°ì¤€ ì›€ì§ì´ê²Œ í•˜ë ¤ëŠ” ë°©í–¥
 
     string InputH = "Horizontal";
     string InputV = "Vertical";
@@ -27,20 +27,20 @@ public class PlayerControl : MonoBehaviour
         m_cc = GetComponent<CharacterController>();
     }
 
-    //Ä³¸¯ÅÍÀÇ ÀÌµ¿°Å¸®¸¦ ¸®ÅÏ
+    //ìºë¦­í„°ì˜ ì´ë™ê±°ë¦¬ë¥¼ ë¦¬í„´
     public float GetMagnitude()
     {
         return m_movement.magnitude;
     }
 
-    //Ä³¸¯ÅÍ°¡ ÀÌµ¿ÇÏ°í ÀÖ´Â ¹æÇâÀ» ¸®ÅÏ
+    //ìºë¦­í„°ê°€ ì´ë™í•˜ê³  ìˆëŠ” ë°©í–¥ì„ ë¦¬í„´
     public float GetDirection()
     {
         return GetMagnitude() > 0 ? Mathf.Atan2(m_movePosition.x, m_movePosition.z) * Mathf.Rad2Deg : 0;
     }
 
 
-    //ÀÎ
+    //ì í”„ ì²´í¬
     public bool IsJumped()
     {
         if (m_jumped)
@@ -52,29 +52,29 @@ public class PlayerControl : MonoBehaviour
         return false;
     }
 
-    //Ä³¸¯ÅÍ°¡ ¶¥¿¡ ´ê¾ÆÀÖ´ÂÁö È®ÀÎ
+    //ìºë¦­í„°ê°€ ë•…ì— ë‹¿ì•„ìˆëŠ”ì§€ í™•ì¸
     public bool IsGrounded()
     {
         return m_cc.isGrounded;
     }
 
-    //Ä³¸¯ÅÍ¸¦ È¸Àü
+    //ìºë¦­í„°ë¥¼ íšŒì „
     public void Rotate(Quaternion angle)
     {
         transform.rotation = angle;
     }
 
-    //Ä³¸¯ÅÍÀÇ ¿òÁ÷ÀÓ(¾ÕµÚÁÂ¿ì)À» ¾÷µ¥ÀÌÆ®ÇÔ
+    //ìºë¦­í„°ì˜ ì›€ì§ì„(ì•ë’¤ì¢Œìš°)ì„ ì—…ë°ì´íŠ¸í•¨
     public void UpdateInput()
     {
         m_movement.x = Input.GetAxis(InputH) * m_speed;
         m_movement.z = Input.GetAxis(InputV) * m_speed;
-        m_movementY += IsGrounded() ? 0 : (m_gravity*Time.deltaTime);
+        m_movementY += IsGrounded() ? 0 : (m_gravity*Time.deltaTime);//ë•…ì— ì•ˆë‹¿ì•˜ì„ ê²½ìš°, ì¤‘ë ¥ ë°›ê¸°
 
-        m_jumped = m_cc.isGrounded ? Input.GetKeyDown(m_keySpace) : false;//Á¡ÇÁÅ°¸¦ ´­·¶À» ¶§ Á¡ÇÁ
+        m_jumped = m_cc.isGrounded ? Input.GetKeyDown(m_keySpace) : false;//ì í”„í‚¤ë¥¼ ëˆŒë €ì„ ë•Œ ì í”„
         if (m_jumped)
         {
-            m_movementY = 4.0f;
+            m_movementY = 4.0f;//ì í”„ë ¥ 4
         }
 
         m_movePosition.Set(m_movement.x, m_movementY, m_movement.z);

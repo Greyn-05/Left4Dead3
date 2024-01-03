@@ -1,12 +1,12 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
-public enum PlayerState//Ä³¸¯ÅÍ »óÅÂ
+public enum PlayerState//ìºë¦­í„° ìƒíƒœ
 {
-    Dead,//»ç¸Á
-    Heal,//Ä¡·á
-    Reload,//ÀåÀü
-    Damage,//ÇÇÇØ ÀÔÀ½
-    Idle,//¾Æ¹« Çàµ¿µµ ¾ÈÇÔ
+    Dead,//ì‚¬ë§
+    Heal,//ì¹˜ë£Œ
+    Reload,//ì¥ì „
+    Damage,//í”¼í•´ ì…ìŒ
+    Idle,//ì•„ë¬´ í–‰ë™ë„ ì•ˆí•¨
 }
 
 public class PlayerManager : MonoBehaviour
@@ -34,16 +34,16 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
-        if(m_healthPoint<=0)//Ä³¸¯ÅÍÀÇ Ã¼·ÂÀÌ ¾øÀ»¶§
+        if(m_healthPoint<=0)//ìºë¦­í„°ì˜ ì²´ë ¥ì´ ì—†ì„ë•Œ
         {
-            m_state = PlayerState.Dead;//Ä³¸¯ÅÍÀÇ »óÅÂ = Á×À½
-            m_tpCamera.ToggleCameraLock();//Ä«¸Ş¶ó È¸Àü, ¿òÁ÷ÀÓ °íÁ¤
+            m_state = PlayerState.Dead;//ìºë¦­í„°ì˜ ìƒíƒœ = ì£½ìŒ
+            m_tpCamera.ToggleCameraLock();//ì¹´ë©”ë¼ íšŒì „, ì›€ì§ì„ ê³ ì •
         }else
         {
             m_tpCamera.UpdateCamera();
             m_playerController.Rotate(m_tpCamera.GetDirection());
             m_playerController.UpdateInput();
-            m_animationManager.UpdateAnimation(m_state, m_playerController.GetDirection(), m_playerController.GetMagnitude(), m_playerController.IsJumped(), m_playerController.IsGrounded());//Ä³¸¯ÅÍÀÇ ÇöÀç »óÅÂ¿¡ µû¶ó ¾Ö´Ï¸ŞÀÌ¼Ç ÀüÈ¯
+            m_animationManager.UpdateAnimation(m_state, m_playerController.GetDirection(), m_playerController.GetMagnitude(), m_playerController.IsJumped(), m_playerController.IsGrounded());//ìºë¦­í„°ì˜ í˜„ì¬ ìƒíƒœì— ë”°ë¼ ì• ë‹ˆë©”ì´ì…˜ ì „í™˜
         }
     }
 }

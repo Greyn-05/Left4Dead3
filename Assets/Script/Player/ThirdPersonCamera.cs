@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
@@ -22,12 +22,12 @@ public class ThirdPersonCamera : MonoBehaviour
     [HideInInspector]
     private Vector2 m_axis = Vector2.zero;
 
-    bool m_lock = true;//Ä«¸Ş¶ó È¸Àü Àá±İ
+    bool m_lock = true;//ì¹´ë©”ë¼ íšŒì „ ì ê¸ˆ
 
     string InputX = "Mouse X";
     string InputY = "Mouse Y";
 
-    public void Initialize()
+    public void Initialize()//ë³€ìˆ˜ ì´ˆê¸°í™”
     {
         if (m_camera == null) m_camera = Camera.main.transform.parent.gameObject;
         m_camera.transform.rotation = Quaternion.identity;
@@ -35,7 +35,7 @@ public class ThirdPersonCamera : MonoBehaviour
         ToggleCameraLock();
     }
 
-    public void ToggleCameraLock()//Ä«¸Ş¶ó Àá±İ ¿Â¿ÀÇÁ
+    public void ToggleCameraLock()//ì¹´ë©”ë¼ ì ê¸ˆ ì˜¨ì˜¤í”„
     {
         m_lock = !m_lock;
 
@@ -49,7 +49,7 @@ public class ThirdPersonCamera : MonoBehaviour
         }
     }
 
-    public void UpdateCamera()//Ä«¸Ş¶ó ¾÷µ¥ÀÌÆ®
+    public void UpdateCamera()//ì¹´ë©”ë¼ ì—…ë°ì´íŠ¸
     {
         if (!m_lock)
         {
@@ -58,23 +58,23 @@ public class ThirdPersonCamera : MonoBehaviour
         }
     }
 
-    public Quaternion GetDirection()//Ä«¸Ş¶ó °¢µµ ¸®ÅÏ, y°ª¸¸
+    public Quaternion GetDirection()//ì¹´ë©”ë¼ ê°ë„ ë¦¬í„´, yê°’ë§Œ
     {
         return Quaternion.Euler(0, m_camera.transform.rotation.eulerAngles.y, 0);
     }
 
-    private void MoveCamera()//Ä«¸Ş¶ó À§Ä¡ º¯°æ
+    private void MoveCamera()//ì¹´ë©”ë¼ ìœ„ì¹˜ ë³€ê²½
     {
         if (m_camera != null)
             m_camera.transform.position = transform.position;
     }
 
-    private void RotateCamera()//Ä«¸Ş¶ó È¸Àü
+    private void RotateCamera()//ì¹´ë©”ë¼ íšŒì „
     {
         m_axis.x += Input.GetAxis(InputX) * m_sensitivityX;
         m_axis.y -= Input.GetAxis(InputY) * m_sensitivityY;
 
-        while (m_axis.x < -360 || m_axis.x > 360)//¸¶¿ì½º°¡ È­¸é ¹ÛÀ¸·Î ³ª°¡Áö ¾Ê°Ô
+        while (m_axis.x < -360 || m_axis.x > 360)//ë§ˆìš°ìŠ¤ê°€ í™”ë©´ ë°–ìœ¼ë¡œ ë‚˜ê°€ì§€ ì•Šê²Œ
         {
             if (m_axis.x < -360)
                 m_axis.x += 360;
@@ -82,9 +82,9 @@ public class ThirdPersonCamera : MonoBehaviour
                 m_axis.x -= 360;
         }
 
-        if (m_axis.magnitude != 0)//¸¶¿ì½º ¿òÁ÷ÀÓÀÌ ÀÖÀ»¶§¸¸
+        if (m_axis.magnitude != 0)//ë§ˆìš°ìŠ¤ ì›€ì§ì„ì´ ìˆì„ë•Œë§Œ
         {
-            m_axis.x = Mathf.Clamp(m_axis.x, m_minX, m_maxX);//ÃÖ´ë ÃÖ¼Ò °¢µµ Á¦ÇÑ
+            m_axis.x = Mathf.Clamp(m_axis.x, m_minX, m_maxX);//ìµœëŒ€ ìµœì†Œ ê°ë„ ì œí•œ
             m_axis.y = Mathf.Clamp(m_axis.y, m_minY, m_maxY);
 
             Quaternion newRot = Quaternion.Euler(m_axis.y, m_axis.x, 0);
