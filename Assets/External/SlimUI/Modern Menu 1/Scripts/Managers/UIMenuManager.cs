@@ -154,7 +154,8 @@ namespace SlimUI.ModernMenu
 
 		public void LoadScene(string scene)
 		{
-			if(scene != ""){
+			if(scene != "")
+			{
 				StartCoroutine(LoadAsynchronously(scene));
 			}
 		}
@@ -327,7 +328,7 @@ namespace SlimUI.ModernMenu
 						operation.allowSceneActivation = true;
 					}
                 }
-				else if(operation.progress >= 0.9f && !waitForInput)
+				else if (operation.progress >= 0.9f && !waitForInput)
 				{
 					operation.allowSceneActivation = true;
 				}
