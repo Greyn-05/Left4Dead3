@@ -603,6 +603,38 @@ Transform:
   m_Father: {fileID: 1464220796}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &318065774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 318065775}
+  m_Layer: 6
+  m_Name: Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &318065775
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318065774}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2024674823}
+  m_Father: {fileID: 1032342223}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &376021456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -765,7 +797,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1032342223}
+    m_TransformParent: {fileID: 318065775}
     m_Modifications:
     - target: {fileID: 2738520558268228719, guid: 748d19574625db444877ca05561b6aea, type: 3}
       propertyPath: m_Name
@@ -801,7 +833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3263699454365990613, guid: 748d19574625db444877ca05561b6aea, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3263699454365990613, guid: 748d19574625db444877ca05561b6aea, type: 3}
       propertyPath: m_LocalRotation.y
@@ -809,7 +841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3263699454365990613, guid: 748d19574625db444877ca05561b6aea, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3263699454365990613, guid: 748d19574625db444877ca05561b6aea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -834,6 +866,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2738520558268228719, guid: 748d19574625db444877ca05561b6aea, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2024674831}
+    - targetCorrespondingSourceObject: {fileID: 2738520558268228719, guid: 748d19574625db444877ca05561b6aea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2024674834}
   m_SourcePrefab: {fileID: 100100000, guid: 748d19574625db444877ca05561b6aea, type: 3}
 --- !u!1 &623751778
 GameObject:
@@ -1391,7 +1426,7 @@ GameObject:
   - component: {fileID: 1032342223}
   - component: {fileID: 1032342224}
   m_Layer: 6
-  m_Name: Weapon
+  m_Name: Weapon Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1409,7 +1444,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2024674823}
+  - {fileID: 318065775}
   m_Father: {fileID: 271103525}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1709,6 +1744,7 @@ GameObject:
   - component: {fileID: 1464220799}
   - component: {fileID: 1464220798}
   - component: {fileID: 1464220801}
+  - component: {fileID: 1464220804}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1775,7 +1811,7 @@ MonoBehaviour:
     m_ActionName: PlayerControl/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1464220801}
         m_TargetAssemblyTypeName: InteractionManager, Assembly-CSharp
         m_MethodName: OnInteractInput
         m_Mode: 0
@@ -1806,7 +1842,19 @@ MonoBehaviour:
     m_ActionId: add70deb-04f5-4585-bce6-7fda0478297d
     m_ActionName: PlayerControl/Look[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: afdd7b4a-7e0c-4c2e-8791-0f0757919dce
     m_ActionName: PlayerControl/Shoot[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
@@ -1904,6 +1952,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   promptText: {fileID: 623751780}
+--- !u!114 &1464220804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464220795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4350291ca50798345960308885c4d7ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curEquip: {fileID: 2024674834}
+  equipParent: {fileID: 318065775}
 --- !u!1 &1559691673 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a5f56547380d3e6448e877c01e64c479, type: 3}
@@ -2292,6 +2354,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.47454393, y: 0.2909438, z: 0.068875186}
   m_Center: {x: 0.06375908, y: -0.032722827, z: 0.0000072345156}
+--- !u!114 &2024674834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024674822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd63a27b95b96d440950c1ce140ebe51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2078745299
 GameObject:
   m_ObjectHideFlags: 0
