@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ThirdPersonCamera : MonoBehaviour
@@ -22,20 +20,22 @@ public class ThirdPersonCamera : MonoBehaviour
 
 
     [HideInInspector]
-    private Vector2 m_axis;
+    private Vector2 m_axis = Vector2.zero;
 
     bool m_lock = true;//카메라 회전 잠금
 
     string InputX = "Mouse X";
     string InputY = "Mouse Y";
 
-    private void Start()
+    public void Initialize()
     {
-        m_camera = Camera.main.transform.parent.gameObject;
+        if (m_camera == null) m_camera = Camera.main.transform.parent.gameObject;
+        m_camera.transform.rotation = Quaternion.identity;
+
         ToggleCameraLock();
     }
 
-    public void ToggleCameraLock()
+    public void ToggleCameraLock()//카메라 잠금 온오프
     {
         m_lock = !m_lock;
 
@@ -47,10 +47,9 @@ public class ThirdPersonCamera : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
-
     }
 
-    public void UpdateCamera()
+    public void UpdateCamera()//카메라 업데이트
     {
         if (!m_lock)
         {
@@ -59,18 +58,18 @@ public class ThirdPersonCamera : MonoBehaviour
         }
     }
 
-    public float GetDirection()
+    public Quaternion GetDirection()//카메라 각도 리턴, y값만
     {
-        return m_camera.transform.eulerAngles.y;
+        return Quaternion.Euler(0, m_camera.transform.rotation.eulerAngles.y, 0);
     }
 
-    private void MoveCamera()
+    private void MoveCamera()//카메라 위치 변경
     {
         if (m_camera != null)
             m_camera.transform.position = transform.position;
     }
 
-    private void RotateCamera()
+    private void RotateCamera()//카메라 회전
     {
         m_axis.x += Input.GetAxis(InputX) * m_sensitivityX;
         m_axis.y -= Input.GetAxis(InputY) * m_sensitivityY;
@@ -85,7 +84,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
         if (m_axis.magnitude != 0)//마우스 움직임이 있을때만
         {
-            m_axis.x = Mathf.Clamp(m_axis.x, m_minX, m_maxX);
+            m_axis.x = Mathf.Clamp(m_axis.x, m_minX, m_maxX);//최대 최소 각도 제한
             m_axis.y = Mathf.Clamp(m_axis.y, m_minY, m_maxY);
 
             Quaternion newRot = Quaternion.Euler(m_axis.y, m_axis.x, 0);
