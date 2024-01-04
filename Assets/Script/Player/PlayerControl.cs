@@ -5,8 +5,10 @@ public class PlayerControl : MonoBehaviour
 {
     public float m_speed = 1.0f;
 
-    [Header("Keys")]
+    [Header("HealKey")]
     public KeyCode m_keyF = KeyCode.F;
+
+    [Header("JumpKey")]
     public KeyCode m_keySpace = KeyCode.Space;
 
     [HideInInspector]
@@ -58,9 +60,9 @@ public class PlayerControl : MonoBehaviour
     {
         RaycastHit hit;
         float dis = 0.0f;
-        Ray ray = new Ray(transform.position + Vector3.down, Vector3.down);//캐릭터 기준 y-1 위치에서 y -1방향으로 레이 생성
+        Ray ray = new Ray(transform.position, Vector3.down);//캐릭터 위치에서 y -1방향으로 레이 생성
 
-        if (Physics.Raycast(ray.origin, ray.direction, out hit, 2))
+        if (Physics.Raycast(ray.origin, ray.direction, out hit, 10))
             dis = ray.origin.y - hit.point.y;
 
         return dis;

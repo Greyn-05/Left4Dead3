@@ -29,6 +29,16 @@ public class ThirdPersonCamera : MonoBehaviour
 
     public void Initialize()//변수 초기화
     {
+        foreach (Camera c in Camera.allCameras)//해당 씬의 다른 모든 카메라들을 disable
+        {
+            if (c.tag != "Third Person Camera")//플레이어의 카메라가 아닐때
+            {
+                c.gameObject.SetActive(false);
+            }
+
+            Debug.Log(c.tag);
+        }
+
         if (m_camera == null) m_camera = Camera.main.transform.parent.gameObject;
         m_camera.transform.rotation = Quaternion.identity;
 
