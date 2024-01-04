@@ -180,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Gun: {fileID: 11400000, guid: 79de9eb595b9ac648a4eac75011abb83, type: 2}
   roundsPerSecond: 1
-  bullet: {fileID: 128836, guid: c9e619a669d974fd28b5c89e43f2bce2, type: 3}
+  bullet: {fileID: 2717630766349143748, guid: e6503a7226a016543873d466de70bbcf, type: 3}
   bulletsInTheGun: 10
   bulletSpawnPlace: {fileID: 5393564705480815369}
   muzzelSpawn: {fileID: 4756597898213357591}
@@ -189,7 +189,7 @@ MonoBehaviour:
   - {fileID: 199458, guid: 487eef9aff9d0f543836d5af5ab26430, type: 3}
   - {fileID: 199458, guid: 7b6a7e40bd9ccc0489274923930761c7, type: 3}
   ShotSound: {fileID: 6836947520764421599}
-  ReloadSound: {fileID: 0}
+  ReloadSound: {fileID: 2556772106083598202}
 --- !u!1 &149698
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,7 +703,7 @@ AudioSource:
   m_GameObject: {fileID: 6590219512877954796}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7128067719386893152, guid: 204ae77320b536d459d12c2126255a73, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.5
