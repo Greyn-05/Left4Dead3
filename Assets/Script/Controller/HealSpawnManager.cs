@@ -24,6 +24,7 @@ public class HealSpawnManager : MonoBehaviour
         spawnDelay = maxSpawnDelay;
         currentHealSpawnCount = 0;
     }
+    //private IEnumerator SpawnHealPack()
     private void Update()
     {
         spawnDelay -= 1 * Time.deltaTime;
@@ -37,6 +38,7 @@ public class HealSpawnManager : MonoBehaviour
                 HealpackSpawn();
                 currentHealSpawnCount++;
                 spawnDelay = maxSpawnDelay;
+                Debug.Log(currentHealSpawnCount);
             }
         }
     }
