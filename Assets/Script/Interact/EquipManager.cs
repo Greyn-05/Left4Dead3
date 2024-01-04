@@ -31,7 +31,7 @@ public class EquipManager : MonoBehaviour
     public void EquipNew(GunData item)
     {
         UnEquip();
-        curEquip = Instantiate(item.equipPrefab, equipParent).GetComponent<Equip>();
+        curEquip = Instantiate(item.Prefab, equipParent).GetComponent<Equip>();
     }
 
     public void UnEquip()

@@ -11,6 +11,7 @@ public class WeaponControl : MonoBehaviour
     {
         shootingScripts = GetComponentInChildren<ShootingScripts>();
     }
+
     public void Shooting(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.phase == InputActionPhase.Started /*&& EquipManager.instance.curEquip != null*/)
@@ -20,4 +21,12 @@ public class WeaponControl : MonoBehaviour
         }
     }
 
+    public void Reloading(InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.phase == InputActionPhase.Started)
+        {
+            shootingScripts = GetComponentInChildren<ShootingScripts>();
+            shootingScripts.Reloading();
+        }
+    }  
 }

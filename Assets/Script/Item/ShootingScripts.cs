@@ -7,17 +7,13 @@ public class ShootingScripts : MonoBehaviour
 {
     public GunData Gun;
 
-    private float waitTillNextFire;
-    public float roundsPerSecond;
+    private float waitTillNextFire; //기본 사격대기시간
+    public float roundsPerSecond; //총기별 사격대기 시간 단축
 
     public GameObject bullet;
+    public float bulletsInTheGun;
 
-    public float bulletsInTheGun = 10;
-
-    public AudioSource shoot_sound_source, reloadSound_source;
-
-    [HideInInspector]
-    public bool reloading;
+    private bool reloading;
 
     [Header("탄피")]
     public GameObject bulletSpawnPlace;
@@ -26,32 +22,50 @@ public class ShootingScripts : MonoBehaviour
     public GameObject muzzelSpawn;
     private GameObject holdFlash;
     public GameObject[] muzzelFlash;
-    
+
+    [Header("Sounds")]
+    public AudioSource ShotSound, ReloadSound;
+
     private Animator animator;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        waitTillNextFire = 1;
+        bulletsInTheGun = Gun.nowBulletInTheGun;
     }
 
+    private void Update()
+    {
+        if(waitTillNextFire > 0)
+        {
+            waitTillNextFire -= roundsPerSecond * Time.deltaTime;
+        }
+    }
 
     public void Shooting()
     {
-        if (bulletsInTheGun != 0)
+        if(waitTillNextFire <= 0)
         {
-            if (Gun.gunStyle == GunStyle.nonautomatic)
+            if (bulletsInTheGun != 0)
             {
-                ShootMethod();
+                if (Gun.gunStyle == GunStyle.nonautomatic)
+                {
+                    ShootMethod();
+                }
+                if (Gun.gunStyle == GunStyle.automatic)
+                {
+                    ShootMethod();
+                }
             }
-            if (Gun.gunStyle == GunStyle.automatic)
+            else //no more bullet
             {
-                ShootMethod();
+                reloading = true;
+                Reloading();
             }
-        }
-        //격발 오류 효과음
-
-        //waitTillNextFire -= roundsPerSecond * Time.deltaTime;
+        }        
     }
+
     private void ShootMethod()
     {
         if (waitTillNextFire <= 0 && !reloading)
@@ -63,25 +77,29 @@ public class ShootingScripts : MonoBehaviour
                 print("Missing the bullet prefab");
             holdFlash = Instantiate(muzzelFlash[randomNumberForMuzzelFlash], muzzelSpawn.transform.position /*- muzzelPosition*/, muzzelSpawn.transform.rotation * Quaternion.Euler(0, 0, 90)) as GameObject;
             holdFlash.transform.parent = muzzelSpawn.transform;
-            if (shoot_sound_source)
-                shoot_sound_source.Play();
+            if (ShotSound)
+                ShotSound.Play();
             animator.SetTrigger("Shot");
-            //else
-            //    print("Missing 'Shoot Sound Source'.");
-
-            //waitTillNextFire = 1;
+            
+            waitTillNextFire = 1;
             bulletsInTheGun -= 1;
         }
+                
 
-        //else
-        //{
-        //    //if(!aiming)
-        //    StartCoroutine("Reload_Animation");
-        //    //if(emptyClip_sound_source)
-        //    //	emptyClip_sound_source.Play();
-        //}
+    }
 
+    public void Reloading()
+    {
+        animator.SetTrigger("Reload");
+        if (ReloadSound) ReloadSound.Play();
+        else Debug.Log("No ReloadSound");
+        StartCoroutine("FillBullet");
+    }
 
-
+    IEnumerator FillBullet()
+    {
+        yield return new WaitForSeconds(1f);
+        bulletsInTheGun = Gun.maxBulletInTheGun;
+        reloading = false; 
     }
 }
