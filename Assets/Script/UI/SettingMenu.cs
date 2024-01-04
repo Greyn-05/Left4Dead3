@@ -14,6 +14,8 @@ public class SettingMenu : MonoBehaviour
     private int themeIndex;
     public ThemedUIData themeController;
 
+    public GameObject exitMenu;
+
     [Header("PANELS")]
     [Tooltip("The UI Panel parenting all sub menus")]
     public GameObject SettingCanvas;
@@ -48,6 +50,8 @@ public class SettingMenu : MonoBehaviour
 	[Tooltip("Highlight Image for when CROSSHAIR Tab is selected in Settings")]
     public GameObject lineKeyBindings;
     [Tooltip("Highlight Image for when MOVEMENT Sub-Tab is selected in KEY BINDINGS")]
+    public GameObject lineExit;
+    [Tooltip("Highlight Image for when EXIT Tab is selected in Settings")]
     public GameObject lineMovement;
     [Tooltip("Highlight Image for when COMBAT Sub-Tab is selected in KEY BINDINGS")]
     public GameObject lineCombat;
@@ -66,6 +70,7 @@ public class SettingMenu : MonoBehaviour
 	void Start()
 	{
         SetThemeColors();
+        exitMenu.SetActive(false);
 	}
 
 	void SetThemeColors()
@@ -100,9 +105,14 @@ public class SettingMenu : MonoBehaviour
 
 	public void ReturnMenu()
 	{
-		SettingCanvas.SetActive(false);
-        // 다시 게임 화면으로
+        exitMenu.SetActive(false);
+        GamePanel();
 	}
+
+    public void ReturnGame()
+    {
+        // 다시 게임 화면으로
+    }
 
 	void DisablePanels()
 	{
@@ -117,6 +127,7 @@ public class SettingMenu : MonoBehaviour
 		lineVideo.SetActive(false);
 		lineKeyBindings.SetActive(false);
 		lineCrossHair.SetActive(false);
+        lineExit.SetActive(false);
 
 		PanelMovement.SetActive(false);
 		lineMovement.SetActive(false);
@@ -201,13 +212,17 @@ public class SettingMenu : MonoBehaviour
 		swooshSound.Play();
 	}
 
-	// // Are You Sure - Quit Panel Pop Up
-	// public void AreYouSure()
-	// {
-	// 	exitMenu.SetActive(true);
-	// 	if(extrasMenu) extrasMenu.SetActive(false);
-	// 	DisablePlayCampaign();
-	// }
+	// Are You Sure - Quit Panel Pop Up
+	public void AreYouSure()
+	{
+        DisablePanels();
+		exitMenu.SetActive(true);
+	}
+
+    public void LoadScene()
+	{
+        SceneManager.LoadScene("Seyeon_Start"); // 씬 이름 추후 수정 필
+	}
 
 	// public void QuitGame()
 	// {
