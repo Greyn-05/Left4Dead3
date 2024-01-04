@@ -20,6 +20,7 @@ public enum SelectedItem//인벤토리 선택
 
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager Instance;
 
     [HideInInspector]
     private PlayerControl m_playerController;
@@ -37,6 +38,10 @@ public class PlayerManager : MonoBehaviour
 
     public HpBar hpBar;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         m_healthPoint = 100.0f;
