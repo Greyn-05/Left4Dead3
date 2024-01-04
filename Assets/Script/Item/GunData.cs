@@ -14,6 +14,7 @@ public enum GunStyle
     nonautomatic, 
     automatic
 }
+
 [CreateAssetMenu(fileName = "Item", menuName = "New Gun")]
 public class GunData : ScriptableObject
 {

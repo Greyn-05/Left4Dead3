@@ -9,6 +9,15 @@ public enum PlayerState//캐릭터 상태
     Idle,//아무 행동도 안함
 }
 
+public enum SelectedItem//인벤토리 선택
+{
+    Null,//Null
+    MainWeapon,
+    SubWeapon,
+    Aid,
+    Grenade,
+}
+
 public class PlayerManager : MonoBehaviour
 {
 
@@ -21,7 +30,10 @@ public class PlayerManager : MonoBehaviour
     private float m_maxHp;
 
     private PlayerState m_state = PlayerState.Idle;
-    private ItemInfo[] m_inventory = new ItemInfo[4];
+    private GunData m_mainWeapon = null; //주무기 
+    private GunData m_subWeapon = null; // 보조무기
+
+    private SelectedItem m_selected = SelectedItem.MainWeapon;
 
     private void Start()
     {
@@ -43,10 +55,11 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
+            SelectItem(m_playerController.GetNumKey());
             m_tpCamera.UpdateCamera();
             m_playerController.Rotate(m_tpCamera.GetDirection());
             m_playerController.UpdateInput();
-            m_animationManager.UpdateAnimation(m_state, m_playerController.GetDirection(), m_playerController.GetMagnitude(), m_playerController.IsJumped(), m_playerController.IsGrounded(), m_playerController.GetGroundDistance());//캐릭터의 현재 상태에 따라 애니메이션 전환
+            m_animationManager.UpdateAnimation(m_state, m_playerController.GetDirection(), m_playerController.GetMagnitude(), m_playerController.IsJumped(), m_playerController.IsGrounded());//캐릭터의 현재 상태에 따라 애니메이션 전환
         }
     }
 
@@ -63,12 +76,39 @@ public class PlayerManager : MonoBehaviour
         m_healthPoint = m_healthPoint > m_maxHp ? m_maxHp : m_healthPoint;//최대 체력을 초과하면 최대치로 고정
     }
 
-    //아이템 얻기
-    public void AddItem(ItemInfo info)
+    //무기 교체
+    public void SwitchWeapon(GunData info)
     {
-        if (info.m_type != ItemType.Null)
+        if (info.gunType != GunType.Pistol)
         {
-            m_inventory[(int)info.m_type- 1] = info;
+            m_mainWeapon = info;//주무기(스나, 샷건 등) 저장
+        }
+        else
+        {
+            m_subWeapon = info;//권총만 따로 빼서 저장
         }
     }
+
+    //회복킷 추가, 감소
+    public void AddAids(int k)
+    {
+        //m_aidStack += k;
+    }
+
+    //수류탄 추가, 감소
+    public void AddGrenade(int k)
+    {
+        //m_grenadeStack += k;
+    }
+
+    //장비 선택
+    private void SelectItem(int index)
+    {
+        if (index != 0)
+        {
+            m_selected = (SelectedItem)index;
+        }
+
+    }
+
 }

@@ -13,7 +13,6 @@ public class PlayerAnimationManager : MonoBehaviour
     private int IsJumped = Animator.StringToHash("IsJumped");
     private int IsGrounded = Animator.StringToHash("IsGrounded");
     private int IsSprint = Animator.StringToHash("IsSprint");
-    private int GroundDistance = Animator.StringToHash("GroundDistance");
 
     private void Start()
     {
@@ -21,11 +20,10 @@ public class PlayerAnimationManager : MonoBehaviour
     }
 
     //캐릭터 상태에 따라 애니메이션 전환하는 함수
-    public void UpdateAnimation(PlayerState state, float angle, float magnitude, bool isjumped, bool isground, float distance)
+    public void UpdateAnimation(PlayerState state, float angle, float magnitude, bool isjumped, bool isground)
     {
         m_animator.SetFloat(InputAngle, angle);
         m_animator.SetFloat(InputMagnitude, magnitude);
-        m_animator.SetFloat(GroundDistance, distance);
         if (isjumped) m_animator.SetTrigger(IsJumped);//점프 키를 눌렀을 때 트리거 발동
         m_animator.SetBool(IsGrounded, isground);
 
