@@ -14,7 +14,7 @@ public class WeaponControl : MonoBehaviour
 
     public void Shooting(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.phase == InputActionPhase.Started /*&& EquipManager.instance.curEquip != null*/)
+        if (callbackContext.phase == InputActionPhase.Started)
         {
             shootingScripts = GetComponentInChildren<ShootingScripts>();
             shootingScripts.Shooting();

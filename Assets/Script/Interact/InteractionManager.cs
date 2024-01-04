@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public interface IInteractable
 {
@@ -21,7 +22,7 @@ public class InteractionManager : MonoBehaviour
     private GameObject curInteractGameobject;
     private IInteractable curInteractable;
 
-    public TMP_Text promptText;
+    public Text interactText;
     private Camera _camera;
 
 
@@ -54,15 +55,15 @@ public class InteractionManager : MonoBehaviour
             {
                 curInteractGameobject = null;
                 curInteractable = null;
-                //promptText.gameObject.SetActive(false);
+                interactText.gameObject.SetActive(false);
             }
         }
     }
 
     private void SetPromptText()
     {
-        //promptText.gameObject.SetActive(true);
-        promptText.text = string.Format("<b>[E]</b> {0}", curInteractable.GetInteractPrompt());
+        interactText.gameObject.SetActive(true);
+        interactText.text = string.Format("<b>[E]</b> {0}", curInteractable.GetInteractPrompt());
     }
 
     public void OnInteractInput(InputAction.CallbackContext callbackContext)
@@ -72,7 +73,7 @@ public class InteractionManager : MonoBehaviour
             curInteractable.OnInteract();
             curInteractGameobject = null;
             curInteractable = null;
-            promptText.gameObject.SetActive(false);
+            interactText.gameObject.SetActive(false);
         }
     }
 }

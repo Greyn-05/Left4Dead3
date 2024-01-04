@@ -7,6 +7,9 @@ TagManager:
   - Third Person Camera
   - Enemy
   - LevelPart
+  - Weapon
+  - BulletSpawn
+  - SecondCamera
   layers:
   - Default
   - TransparentFX
