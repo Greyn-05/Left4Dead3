@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ItemObject : MonoBehaviour, IInteractable
 {
-    public GunData item;
+    public GunData Gun;
 
     public string GetInteractPrompt()
     {
-        return string.Format("Pickup {0}", item.gunName);
+        return string.Format("Pickup {0}", Gun.gunName);
     }
 
     public void OnInteract()

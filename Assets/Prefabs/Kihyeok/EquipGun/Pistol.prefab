@@ -11,9 +11,7 @@ GameObject:
   - component: {fileID: 7444910112014984413}
   - component: {fileID: 8947387821100716602}
   - component: {fileID: 7445273723151058685}
-  - component: {fileID: 5244329953510815841}
   - component: {fileID: 4104569330673090798}
-  - component: {fileID: 5261194094811599124}
   - component: {fileID: 4756009487287547319}
   m_Layer: 6
   m_Name: Pistol
@@ -35,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &8947387821100716602
 MeshFilter:
@@ -87,19 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5244329953510815841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8986352476503097240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0b23c54917c8f145b7518f3d2cd9b9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 79de9eb595b9ac648a4eac75011abb83, type: 2}
 --- !u!65 &4104569330673090798
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -121,18 +106,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.47454393, y: 0.2909438, z: 0.068875186}
   m_Center: {x: 0.06375908, y: -0.032722827, z: 0.0000072345156}
---- !u!114 &5261194094811599124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8986352476503097240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd63a27b95b96d440950c1ce140ebe51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &4756009487287547319
 Animator:
   serializedVersion: 5

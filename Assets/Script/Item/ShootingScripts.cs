@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class ShootingScripts : MonoBehaviour
 {
-    public GunData GunData;
+    public GunData Gun;
 
     private float waitTillNextFire;
     public float roundsPerSecond;
@@ -35,30 +35,28 @@ public class ShootingScripts : MonoBehaviour
     }
 
 
-    public void Shooting(InputAction.CallbackContext callbackContext)
+    public void Shooting()
     {
-        if (callbackContext.phase == InputActionPhase.Started /*&& EquipManager.instance.curEquip != null*/)
+        if (bulletsInTheGun != 0)
         {
-            if (bulletsInTheGun != 0)
+            if (Gun.gunStyle == GunStyle.nonautomatic)
             {
-                if (GunData.gunStyle == GunStyle.nonautomatic)
-                {
-                        ShootMethod();
-                }
-                if (GunData.gunStyle == GunStyle.automatic)
-                {
-                        ShootMethod();
-                }
+                ShootMethod();
             }
-            //격발 오류 효과음
+            if (Gun.gunStyle == GunStyle.automatic)
+            {
+                ShootMethod();
+            }
         }
+        //격발 오류 효과음
+
         //waitTillNextFire -= roundsPerSecond * Time.deltaTime;
     }
     private void ShootMethod()
     {
         if (waitTillNextFire <= 0 && !reloading)
         {
-            int randomNumberForMuzzelFlash = Random.Range(0, 5);
+            int randomNumberForMuzzelFlash = Random.Range(0, muzzelFlash.Length);
             if (bullet)
                 Instantiate(bullet, bulletSpawnPlace.transform.position, bulletSpawnPlace.transform.rotation);
             else
