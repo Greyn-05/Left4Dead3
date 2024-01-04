@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -33,6 +32,7 @@ public class PlayerControl : MonoBehaviour
 
     private float m_gravity = -9.8f;
 
+    bool[] m_numKeyDown = new bool[4];
     bool m_jumped = false;
 
     private void Start()
@@ -90,12 +90,31 @@ public class PlayerControl : MonoBehaviour
         transform.rotation = angle;
     }
 
+    //캐릭터가 이동하고 있는 방향을 리턴
+    public int GetNumKey()
+    {
+        m_numKeyDown[0] = Input.GetKeyDown(m_key1);
+        m_numKeyDown[1] = Input.GetKeyDown(m_key2);
+        m_numKeyDown[2] = Input.GetKeyDown(m_key3);
+        m_numKeyDown[3] = Input.GetKeyDown(m_key4);
+
+        for(int i = 0; i< 4; i++)
+        {
+            if (m_numKeyDown[i])
+            {
+                return i + 1;
+            }
+        }
+
+        return 0;
+    }
+
     //캐릭터의 움직임(앞뒤좌우)을 업데이트함
     public void UpdateInput()
     {
         m_movement.x = Input.GetAxis(InputH) * m_speed;
         m_movement.z = Input.GetAxis(InputV) * m_speed;
-        m_movementY += IsGrounded() ? 0 : (m_gravity*Time.deltaTime);//땅에 안닿았을 경우, 중력 받기
+        m_movementY += IsGrounded() ? 0 : (m_gravity * Time.deltaTime);//땅에 안닿았을 경우, 중력 받기
 
         m_jumped = m_cc.isGrounded ? Input.GetKeyDown(m_keySpace) : false;//점프키를 눌렀을 때 점프
         if (m_jumped)
