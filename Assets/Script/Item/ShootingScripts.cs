@@ -5,82 +5,85 @@ using UnityEngine.InputSystem;
 
 public class ShootingScripts : MonoBehaviour
 {
-
-    public GunStyles currentStyle; //단발, 연발
-
-    public bool meeleAttack;
+    public GunData GunData;
 
     private float waitTillNextFire;
     public float roundsPerSecond;
 
     public GameObject bullet;
 
+    public float bulletsInTheGun = 10;
+
     public AudioSource shoot_sound_source, reloadSound_source;
 
     [HideInInspector]
     public bool reloading;
 
-    [HideInInspector] public GameObject bulletSpawnPlace;
+    [Header("탄피")]
+    public GameObject bulletSpawnPlace;
 
-    public float bulletsInTheGun = 5;
-
+    [Header("총구 화염")]
     public GameObject muzzelSpawn;
     private GameObject holdFlash;
-    private GameObject holdSmoke;
     public GameObject[] muzzelFlash;
-
     
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+
     public void Shooting(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.phase == InputActionPhase.Started && EquipManager.instance.curEquip!= null)
+        if (callbackContext.phase == InputActionPhase.Started /*&& EquipManager.instance.curEquip != null*/)
         {
-            if (!meeleAttack)
+            if (bulletsInTheGun != 0)
             {
-                if (currentStyle == GunStyles.nonautomatic)
+                if (GunData.gunStyle == GunStyle.nonautomatic)
                 {
                         ShootMethod();
                 }
-                if (currentStyle == GunStyles.automatic)
+                if (GunData.gunStyle == GunStyle.automatic)
                 {
                         ShootMethod();
                 }
             }
+            //격발 오류 효과음
         }
-        waitTillNextFire -= roundsPerSecond * Time.deltaTime;
+        //waitTillNextFire -= roundsPerSecond * Time.deltaTime;
     }
     private void ShootMethod()
     {
         if (waitTillNextFire <= 0 && !reloading)
         {
-
-            if (bulletsInTheGun > 0)
-            {
-
-                int randomNumberForMuzzelFlash = Random.Range(0, 5);
-                if (bullet)
-                    Instantiate(bullet, bulletSpawnPlace.transform.position, bulletSpawnPlace.transform.rotation);
-                else
-                    print("Missing the bullet prefab");
-                holdFlash = Instantiate(muzzelFlash[randomNumberForMuzzelFlash], muzzelSpawn.transform.position /*- muzzelPosition*/, muzzelSpawn.transform.rotation * Quaternion.Euler(0, 0, 90)) as GameObject;
-                holdFlash.transform.parent = muzzelSpawn.transform;
-                if (shoot_sound_source)
-                    shoot_sound_source.Play();
-                else
-                    print("Missing 'Shoot Sound Source'.");
-
-                waitTillNextFire = 1;
-                bulletsInTheGun -= 1;
-            }
-
+            int randomNumberForMuzzelFlash = Random.Range(0, 5);
+            if (bullet)
+                Instantiate(bullet, bulletSpawnPlace.transform.position, bulletSpawnPlace.transform.rotation);
             else
-            {
-                //if(!aiming)
-                StartCoroutine("Reload_Animation");
-                //if(emptyClip_sound_source)
-                //	emptyClip_sound_source.Play();
-            }
+                print("Missing the bullet prefab");
+            holdFlash = Instantiate(muzzelFlash[randomNumberForMuzzelFlash], muzzelSpawn.transform.position /*- muzzelPosition*/, muzzelSpawn.transform.rotation * Quaternion.Euler(0, 0, 90)) as GameObject;
+            holdFlash.transform.parent = muzzelSpawn.transform;
+            if (shoot_sound_source)
+                shoot_sound_source.Play();
+            animator.SetTrigger("Shot");
+            //else
+            //    print("Missing 'Shoot Sound Source'.");
 
+            //waitTillNextFire = 1;
+            bulletsInTheGun -= 1;
         }
+
+        //else
+        //{
+        //    //if(!aiming)
+        //    StartCoroutine("Reload_Animation");
+        //    //if(emptyClip_sound_source)
+        //    //	emptyClip_sound_source.Play();
+        //}
+
+
 
     }
 }
