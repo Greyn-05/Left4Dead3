@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Third Person Camera
   - Enemy
+  - LevelPart
   layers:
   - Default
   - TransparentFX
