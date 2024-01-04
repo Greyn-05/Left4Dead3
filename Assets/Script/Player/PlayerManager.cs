@@ -21,6 +21,7 @@ public class PlayerManager : MonoBehaviour
     private float m_maxHp;
 
     private PlayerState m_state = PlayerState.Idle;
+    private ItemInfo[] m_inventory = new ItemInfo[4];
 
     private void Start()
     {
@@ -35,11 +36,12 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
-        if(m_healthPoint<=0)//캐릭터의 체력이 없을때
+        if (m_healthPoint <= 0)//캐릭터의 체력이 없을때
         {
             m_state = PlayerState.Dead;//캐릭터의 상태 = 죽음
             m_tpCamera.ToggleCameraLock();//카메라 회전, 움직임 고정
-        }else
+        }
+        else
         {
             m_tpCamera.UpdateCamera();
             m_playerController.Rotate(m_tpCamera.GetDirection());
@@ -61,4 +63,12 @@ public class PlayerManager : MonoBehaviour
         m_healthPoint = m_healthPoint > m_maxHp ? m_maxHp : m_healthPoint;//최대 체력을 초과하면 최대치로 고정
     }
 
+    //아이템 얻기
+    public void AddItem(ItemInfo info)
+    {
+        if (info.m_type != ItemType.Null)
+        {
+            m_inventory[(int)info.m_type- 1] = info;
+        }
+    }
 }

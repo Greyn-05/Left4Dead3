@@ -5,8 +5,18 @@ public class PlayerControl : MonoBehaviour
 {
     public float m_speed = 1.0f;
 
+    [Header("SelectKey")]
+    public KeyCode m_key1 = KeyCode.Alpha1;
+    public KeyCode m_key2 = KeyCode.Alpha2;
+    public KeyCode m_key3 = KeyCode.Alpha3;
+    public KeyCode m_key4 = KeyCode.Alpha4;
+
+
     [Header("HealKey")]
     public KeyCode m_keyF = KeyCode.F;
+
+    [Header("GetKey")]
+    public KeyCode m_keyE = KeyCode.E;
 
     [Header("JumpKey")]
     public KeyCode m_keySpace = KeyCode.Space;
