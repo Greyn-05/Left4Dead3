@@ -309,7 +309,7 @@ MonoBehaviour:
   m_maxX: 360
   m_maxY: 50
   m_minX: -360
-  m_minY: 0
+  m_minY: -30
 --- !u!114 &728311153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,7 +505,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 2bc57a139dac5074b898d09331f5b054, type: 2}
     - target: {fileID: 5866666021909216657, guid: a226c16ab0d1e4e48b53e6d96ddc2891, type: 3}
       propertyPath: m_CullingMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: a226c16ab0d1e4e48b53e6d96ddc2891, type: 3}
       propertyPath: m_WarningMessage
