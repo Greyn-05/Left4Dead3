@@ -15,7 +15,9 @@ MonoBehaviour:
   gunName: "\uAD8C\uCD1D"
   description: "\uC81C\uC77C \uCC98\uC74C \uC9C0\uAE09\uB418\uB294 \uCD1D"
   gunType: 0
+  gunStyle: 0
   icon: {fileID: 0}
-  dropPrefab: {fileID: 919132149155446097, guid: e6efe674338ad4a49866fd7e5c2ba6b4, type: 3}
-  nowLoadedBullet: 0
-  maxBulletAmount: 12
+  Prefab: {fileID: 149444, guid: 3d3a4f5fcb4669e4396a9e4382609315, type: 3}
+  nowBulletInTheGun: 12
+  maxBulletInTheGun: 12
+  maxBulletAmount: 60

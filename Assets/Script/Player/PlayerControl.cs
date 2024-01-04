@@ -1,11 +1,24 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
     public float m_speed = 1.0f;
 
-    [Header("Keys")]
+    [Header("SelectKey")]
+    public KeyCode m_key1 = KeyCode.Alpha1;
+    public KeyCode m_key2 = KeyCode.Alpha2;
+    public KeyCode m_key3 = KeyCode.Alpha3;
+    public KeyCode m_key4 = KeyCode.Alpha4;
+
+
+    [Header("HealKey")]
     public KeyCode m_keyF = KeyCode.F;
+
+    [Header("GetKey")]
+    public KeyCode m_keyE = KeyCode.E;
+
+    [Header("JumpKey")]
     public KeyCode m_keySpace = KeyCode.Space;
 
     [HideInInspector]
@@ -50,6 +63,19 @@ public class PlayerControl : MonoBehaviour
         }
 
         return false;
+    }
+
+    //캐릭터와 땅과의 거리를 리턴
+    public float GetGroundDistance()
+    {
+        RaycastHit hit;
+        float dis = 0.0f;
+        Ray ray = new Ray(transform.position, Vector3.down);//캐릭터 위치에서 y -1방향으로 레이 생성
+
+        if (Physics.Raycast(ray.origin, ray.direction, out hit, 10))
+            dis = ray.origin.y - hit.point.y;
+
+        return dis;
     }
 
     //캐릭터가 땅에 닿아있는지 확인

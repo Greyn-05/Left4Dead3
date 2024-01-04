@@ -22,13 +22,13 @@ public class InteractionManager : MonoBehaviour
     private IInteractable curInteractable;
 
     public TMP_Text promptText;
-    private Camera camera;
+    private Camera _camera;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        camera = Camera.main;
+        _camera = Camera.main;
     }
 
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class InteractionManager : MonoBehaviour
         {
             lastCheckTime = Time.time;
 
-            Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
+            Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
@@ -54,14 +54,14 @@ public class InteractionManager : MonoBehaviour
             {
                 curInteractGameobject = null;
                 curInteractable = null;
-                promptText.gameObject.SetActive(false);
+                //promptText.gameObject.SetActive(false);
             }
         }
     }
 
     private void SetPromptText()
     {
-        promptText.gameObject.SetActive(true);
+        //promptText.gameObject.SetActive(true);
         promptText.text = string.Format("<b>[E]</b> {0}", curInteractable.GetInteractPrompt());
     }
 
