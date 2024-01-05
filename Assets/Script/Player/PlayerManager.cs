@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
 public enum PlayerState//캐릭터 상태
 {
@@ -9,23 +10,15 @@ public enum PlayerState//캐릭터 상태
     Idle,//아무 행동도 안함
 }
 
-public enum SelectedItem//인벤토리 선택
-{
-    Null,//Null
-    MainWeapon,
-    SubWeapon,
-    Aid,
-    Grenade,
-}
-
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance;
 
     [HideInInspector]
     private PlayerControl m_playerController;
+    private WeaponControl m_weaponControl;
     private PlayerAnimationManager m_animationManager;
-    private PlayerCameraManager m_tpCamera;
+    private PlayerCameraManager m_cameraManager;
 
     private float m_healthPoint;
     private float m_maxHp;
@@ -33,8 +26,6 @@ public class PlayerManager : MonoBehaviour
     private PlayerState m_state = PlayerState.Idle;
     public GunData m_mainWeapon = null; //주무기 
     public GunData m_subWeapon = null; // 보조무기
-
-    private SelectedItem m_selected = SelectedItem.MainWeapon;
 
     public HpBar hpBar;
 
@@ -49,29 +40,29 @@ public class PlayerManager : MonoBehaviour
         m_healthPoint = m_maxHp; // 최대 체력으로 시작
 
         m_playerController = GetComponent<PlayerControl>();
-        m_tpCamera = GetComponent<PlayerCameraManager>();
+        m_cameraManager = GetComponent<PlayerCameraManager>();
         m_animationManager = transform.GetChild(0).GetComponent<PlayerAnimationManager>();
+        //m_weaponControl = m_cameraManager.GetWeaponObj().GetComponent<WeaponControl>();
 
-        m_tpCamera.Initialize();
-
-        hpBar.UpdateHpBar(m_healthPoint / m_maxHp); // 체력바 초기화
+        m_cameraManager.Initialize();
     }
 
     private void Update()
     {
+        //hpBar.UpdateHpBar(m_healthPoint / m_maxHp); // 체력바 초기화
+
         if (m_healthPoint <= 0)//캐릭터의 체력이 없을때
         {
             m_state = PlayerState.Dead;//캐릭터의 상태 = 죽음
-            m_tpCamera.ToggleCameraLock();//카메라 회전, 움직임 고정
+            m_cameraManager.ToggleCameraLock();//카메라 회전, 움직임 고정
         }
         else
         {
-            SelectItem(m_playerController.GetNumKey());
-            m_tpCamera.UpdateCamera();
-            m_tpCamera.ChangeCamera(m_playerController.IsF5());
-            m_playerController.Rotate(m_tpCamera.GetDirection());
+            //SelectItem(m_playerController.GetNumKey());
+            m_cameraManager.UpdateCamera();
+            m_playerController.Rotate(m_cameraManager.GetDirection());
             m_playerController.UpdateInput();
-            m_animationManager.UpdateAnimation(m_state, m_playerController.GetDirection(), m_playerController.GetMagnitude(), m_playerController.IsJumped(), m_playerController.IsGrounded());//캐릭터의 현재 상태에 따라 애니메이션 전환
+            m_animationManager.UpdateAnimation(m_state, m_playerController.GetDirection(), m_playerController.GetMagnitude(), m_playerController.IsGrounded());//캐릭터의 현재 상태에 따라 애니메이션 전환
         }
     }
 
@@ -112,15 +103,5 @@ public class PlayerManager : MonoBehaviour
     public void AddGrenade(int k)
     {
         //m_grenadeStack += k;
-    }
-
-    //장비 선택
-    private void SelectItem(int index)
-    {
-        if (index != 0)
-        {
-            m_selected = (SelectedItem)index;
-        }
-
     }
 }
