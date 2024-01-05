@@ -13,6 +13,7 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
+        //인벤토리에 추가
         Destroy(gameObject);
     }
 }
