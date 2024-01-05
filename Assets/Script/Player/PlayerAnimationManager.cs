@@ -19,12 +19,16 @@ public class PlayerAnimationManager : MonoBehaviour
         m_animator = GetComponent<Animator>();
     }
 
+    public void DoJump()
+    {
+        m_animator.SetTrigger(IsJumped);
+    }
+
     //캐릭터 상태에 따라 애니메이션 전환하는 함수
-    public void UpdateAnimation(PlayerState state, float angle, float magnitude, bool isjumped, bool isground)
+    public void UpdateAnimation(PlayerState state, float angle, float magnitude, bool isground)
     {
         m_animator.SetFloat(InputAngle, angle);
         m_animator.SetFloat(InputMagnitude, magnitude);
-        if (isjumped) m_animator.SetTrigger(IsJumped);//점프 키를 눌렀을 때 트리거 발동
         m_animator.SetBool(IsGrounded, isground);
 
         switch(state)
