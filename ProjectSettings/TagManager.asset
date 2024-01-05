@@ -10,16 +10,19 @@ TagManager:
   - Weapon
   - BulletSpawn
   - SecondCamera
+  - First Person Camera
+  - Weapon
+  - BulletSpawn
+  - SecondCamera
   - UI
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
   - Water
   - UI
   - Weapon
-  - 
+  - Player
   - 
   - 
   - 
