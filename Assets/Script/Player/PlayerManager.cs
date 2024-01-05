@@ -25,7 +25,7 @@ public class PlayerManager : MonoBehaviour
     [HideInInspector]
     private PlayerControl m_playerController;
     private PlayerAnimationManager m_animationManager;
-    private ThirdPersonCamera m_tpCamera;
+    private PlayerCameraManager m_tpCamera;
 
     private float m_healthPoint;
     private float m_maxHp;
@@ -49,7 +49,7 @@ public class PlayerManager : MonoBehaviour
         m_healthPoint = m_maxHp; // 최대 체력으로 시작
 
         m_playerController = GetComponent<PlayerControl>();
-        m_tpCamera = GetComponent<ThirdPersonCamera>();
+        m_tpCamera = GetComponent<PlayerCameraManager>();
         m_animationManager = transform.GetChild(0).GetComponent<PlayerAnimationManager>();
 
         m_tpCamera.Initialize();
@@ -68,6 +68,7 @@ public class PlayerManager : MonoBehaviour
         {
             SelectItem(m_playerController.GetNumKey());
             m_tpCamera.UpdateCamera();
+            m_tpCamera.ChangeCamera(m_playerController.IsF5());
             m_playerController.Rotate(m_tpCamera.GetDirection());
             m_playerController.UpdateInput();
             m_animationManager.UpdateAnimation(m_state, m_playerController.GetDirection(), m_playerController.GetMagnitude(), m_playerController.IsJumped(), m_playerController.IsGrounded());//캐릭터의 현재 상태에 따라 애니메이션 전환

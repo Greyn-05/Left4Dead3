@@ -10,6 +10,8 @@ public class PlayerControl : MonoBehaviour
     public KeyCode m_key3 = KeyCode.Alpha3;
     public KeyCode m_key4 = KeyCode.Alpha4;
 
+    [Header("ChangeCameraKey")]
+    public KeyCode m_keyF5 = KeyCode.F5;
 
     [Header("HealKey")]
     public KeyCode m_keyF = KeyCode.F;
@@ -34,6 +36,7 @@ public class PlayerControl : MonoBehaviour
 
     bool[] m_numKeyDown = new bool[4];
     bool m_jumped = false;
+    bool m_f5 = false;
 
     private void Start()
     {
@@ -59,6 +62,20 @@ public class PlayerControl : MonoBehaviour
         if (m_jumped)
         {
             m_jumped = false;
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool IsF5()
+    {
+        m_f5 = Input.GetKeyDown(m_keyF5);
+
+        if (m_f5)
+        {
+            m_f5 = false;
+
             return true;
         }
 
@@ -119,7 +136,7 @@ public class PlayerControl : MonoBehaviour
         m_jumped = m_cc.isGrounded ? Input.GetKeyDown(m_keySpace) : false;//점프키를 눌렀을 때 점프
         if (m_jumped)
         {
-            m_movementY = 4.0f;//점프력 4
+            m_movementY = 3.0f;//점프력 4
         }
 
         m_movePosition.Set(m_movement.x, m_movementY, m_movement.z);
