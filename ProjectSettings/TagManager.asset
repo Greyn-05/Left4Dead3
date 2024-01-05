@@ -19,10 +19,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
+  - 
   - Water
   - UI
-  - Weapon
   - Player
+  - Gun
   - 
   - 
   - 

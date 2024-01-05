@@ -30,6 +30,7 @@ public class HitBullet : MonoBehaviour
                     Instantiate(decalHitWall, hit.point + hit.normal * floatInfrontOfWall, Quaternion.LookRotation(hit.normal));
                     Destroy(gameObject);
                 }
+
                 if (hit.transform.tag == "Enemy")
                 {
                     Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));

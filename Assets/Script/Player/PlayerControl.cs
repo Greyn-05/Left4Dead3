@@ -1,23 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerControl : MonoBehaviour
 {
     public float m_speed = 1.0f;
 
-    [Header("SelectKey")]
-    public KeyCode m_key1 = KeyCode.Alpha1;
-    public KeyCode m_key2 = KeyCode.Alpha2;
-    public KeyCode m_key3 = KeyCode.Alpha3;
-    public KeyCode m_key4 = KeyCode.Alpha4;
-
     [Header("ChangeCameraKey")]
     public KeyCode m_keyF5 = KeyCode.F5;
-
-    [Header("HealKey")]
-    public KeyCode m_keyF = KeyCode.F;
-
-    [Header("GetKey")]
-    public KeyCode m_keyE = KeyCode.E;
 
     [Header("JumpKey")]
     public KeyCode m_keySpace = KeyCode.Space;
@@ -33,10 +22,6 @@ public class PlayerControl : MonoBehaviour
     string InputV = "Vertical";
 
     private float m_gravity = -9.8f;
-
-    bool[] m_numKeyDown = new bool[4];
-    bool m_jumped = false;
-    bool m_f5 = false;
 
     private void Start()
     {
@@ -55,30 +40,21 @@ public class PlayerControl : MonoBehaviour
         return GetMagnitude() > 0 ? Mathf.Atan2(m_movePosition.x, m_movePosition.z) * Mathf.Rad2Deg : 0;
     }
 
-
     //점프 체크
-    public bool IsJumped()
+    public void IsJumped(InputAction.CallbackContext context)
     {
-        if (m_jumped)
-        {
-            m_jumped = false;
-            return true;
-        }
-
-        return false;
+        m_movementY = m_cc.isGrounded ? 3.0f : m_movementY;//점프키를 눌렀을 때 점프
     }
 
-    public bool IsF5()
+
+
+    //마우스 클릭 체크
+    public bool GetMouse0()
     {
-        m_f5 = Input.GetKeyDown(m_keyF5);
-
-        if (m_f5)
+        if (Input.GetMouseButton(0))
         {
-            m_f5 = false;
-
             return true;
         }
-
         return false;
     }
 
@@ -107,40 +83,25 @@ public class PlayerControl : MonoBehaviour
         transform.rotation = angle;
     }
 
-    //캐릭터가 이동하고 있는 방향을 리턴
-    public int GetNumKey()
-    {
-        m_numKeyDown[0] = Input.GetKeyDown(m_key1);
-        m_numKeyDown[1] = Input.GetKeyDown(m_key2);
-        m_numKeyDown[2] = Input.GetKeyDown(m_key3);
-        m_numKeyDown[3] = Input.GetKeyDown(m_key4);
-
-        for(int i = 0; i< 4; i++)
-        {
-            if (m_numKeyDown[i])
-            {
-                return i + 1;
-            }
-        }
-
-        return 0;
-    }
-
     //캐릭터의 움직임(앞뒤좌우)을 업데이트함
     public void UpdateInput()
     {
-        m_movement.x = Input.GetAxis(InputH) * m_speed;
-        m_movement.z = Input.GetAxis(InputV) * m_speed;
-        m_movementY += IsGrounded() ? 0 : (m_gravity * Time.deltaTime);//땅에 안닿았을 경우, 중력 받기
+        //m_movement.x = Input.GetAxis(InputH) * m_speed;
+        //m_movement.z = Input.GetAxis(InputV) * m_speed;
 
-        m_jumped = m_cc.isGrounded ? Input.GetKeyDown(m_keySpace) : false;//점프키를 눌렀을 때 점프
-        if (m_jumped)
-        {
-            m_movementY = 3.0f;//점프력 4
-        }
+        m_movementY += IsGrounded() ? 0 : (m_gravity * Time.deltaTime);//땅에 안닿았을 경우, 중력 받기
 
         m_movePosition.Set(m_movement.x, m_movementY, m_movement.z);
         m_cc.Move(transform.rotation * m_movePosition * Time.deltaTime);
+    }
+
+    public void OnMoveInput(InputAction.CallbackContext context)
+    {
+        Vector2 input = Vector2.zero;
+        input = context.ReadValue<Vector2>() * m_speed;
+
+        m_movement.x = input.x;
+        m_movement.z = input.y;
     }
 
 }
