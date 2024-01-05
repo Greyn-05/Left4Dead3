@@ -9,7 +9,7 @@ public class EquipManager : MonoBehaviour
     public Equip curEquip;
     public Transform equipParent;
 
-    private PlayerController controller;
+    //private PlayerController controller;
 
     // singleton
     public static EquipManager instance;
@@ -17,29 +17,29 @@ public class EquipManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        controller = GetComponent<PlayerController>();
+        //controller = GetComponent<PlayerController>();
     }
 
-    public void OnAttackInput(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Performed && curEquip != null && controller.canLook)
-        {
-            curEquip.OnAttackInput();
-        }
-    }
+    //public void OnAttackInput(InputAction.CallbackContext context)
+    //{
+    //    if (context.phase == InputActionPhase.Performed && curEquip != null && controller.canLook)
+    //    {
+    //        curEquip.OnAttackInput();
+    //    }
+    //}
 
-    public void EquipNew(GunData item)
-    {
-        UnEquip();
-        curEquip = Instantiate(item.Prefab, equipParent).GetComponent<Equip>();
-    }
+    //public void EquipNew(GunData item)
+    //{
+    //    UnEquip();
+    //    curEquip = Instantiate(item.Prefab, equipParent).GetComponent<Equip>();
+    //}
 
-    public void UnEquip()
-    {
-        if (curEquip != null)
-        {
-            Destroy(curEquip.gameObject);
-            curEquip = null;
-        }
-    }
+    //public void UnEquip()
+    //{
+    //    if (curEquip != null)
+    //    {
+    //        Destroy(curEquip.gameObject);
+    //        curEquip = null;
+    //    }
+    //}
 }
