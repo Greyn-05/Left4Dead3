@@ -7,6 +7,13 @@ TagManager:
   - Third Person Camera
   - Enemy
   - LevelPart
+<<<<<<< Updated upstream
+=======
+  - Weapon
+  - BulletSpawn
+  - SecondCamera
+  - First Person Camera
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
@@ -15,7 +22,7 @@ TagManager:
   - Water
   - UI
   - Weapon
-  - 
+  - Player
   - 
   - 
   - 
