@@ -20,6 +20,7 @@ public enum SelectedItem//인벤토리 선택
 
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager Instance;
 
     [HideInInspector]
     private PlayerControl m_playerController;
@@ -35,15 +36,25 @@ public class PlayerManager : MonoBehaviour
 
     private SelectedItem m_selected = SelectedItem.MainWeapon;
 
+    public HpBar hpBar;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         m_healthPoint = 100.0f;
+        m_maxHp = 100.0f;
+        m_healthPoint = m_maxHp; // 최대 체력으로 시작
 
         m_playerController = GetComponent<PlayerControl>();
         m_tpCamera = GetComponent<ThirdPersonCamera>();
         m_animationManager = transform.GetChild(0).GetComponent<PlayerAnimationManager>();
 
         m_tpCamera.Initialize();
+
+        hpBar.UpdateHpBar(m_healthPoint / m_maxHp); // 체력바 초기화
     }
 
     private void Update()
@@ -74,6 +85,7 @@ public class PlayerManager : MonoBehaviour
     {
         m_healthPoint += p;
         m_healthPoint = m_healthPoint > m_maxHp ? m_maxHp : m_healthPoint;//최대 체력을 초과하면 최대치로 고정
+        hpBar.UpdateHpBar(m_healthPoint / m_maxHp); // 체력바 업데이트
     }
 
     //무기 교체
@@ -110,5 +122,4 @@ public class PlayerManager : MonoBehaviour
         }
 
     }
-
 }
