@@ -31,8 +31,8 @@ public class PlayerManager : MonoBehaviour
     private float m_maxHp;
 
     private PlayerState m_state = PlayerState.Idle;
-    private GunData m_mainWeapon = null; //주무기 
-    private GunData m_subWeapon = null; // 보조무기
+    public GunData m_mainWeapon = null; //주무기 
+    public GunData m_subWeapon = null; // 보조무기
 
     private SelectedItem m_selected = SelectedItem.MainWeapon;
 

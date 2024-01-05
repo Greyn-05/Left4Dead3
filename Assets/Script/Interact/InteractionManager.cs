@@ -63,7 +63,9 @@ public class InteractionManager : MonoBehaviour
     private void SetPromptText()
     {
         interactText.gameObject.SetActive(true);
+        Debug.Log("setactive");
         interactText.text = string.Format("<b>[E]</b> {0}", curInteractable.GetInteractPrompt());
+        Debug.Log(interactText.text);        
     }
 
     public void OnInteractInput(InputAction.CallbackContext callbackContext)
