@@ -12,12 +12,15 @@ public class CrosshairRGB : MonoBehaviour
 
     public Image CrossHair;
 
-
     private Color crossHairColor;
     //public Color CrossHairColor;
     private void Awake()
     {
         crossHairColor = CrossHair.color;
+
+        Red.value = PlayerPrefs.GetFloat("R_value");
+        Green.value = PlayerPrefs.GetFloat("G_value");
+        Blue.value = PlayerPrefs.GetFloat("B_value");
     }
 
     private void Update()
@@ -26,17 +29,9 @@ public class CrosshairRGB : MonoBehaviour
         crossHairColor.g = Green.value;
         crossHairColor.b = Blue.value;
         CrossHair.color = crossHairColor;
-    }
-    //public void ChangeR()
-    //{
-    //}
-    //public void ChangeG()
-    //{
-    //    CrossHair.color = crossHairColor;
-    //}
-    //public void ChangeB()
-    //{
-    //    CrossHair.color = crossHairColor;
-    //}
 
+        PlayerPrefs.SetFloat("R_value", crossHairColor.r);
+        PlayerPrefs.SetFloat("G_value", crossHairColor.g);
+        PlayerPrefs.SetFloat("B_value", crossHairColor.b);
+    }
 }

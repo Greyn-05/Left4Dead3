@@ -11,6 +11,7 @@ public class CrosshairChange : MonoBehaviour
     public void ChangeBtn(int crosshairNum)
     {
         MainCrossHair.sprite = CrossHairImages[crosshairNum];
+        PlayerPrefs.SetInt("CrossHairNum", crosshairNum);
     }
 
 }
