@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6461409056512374851}
   - component: {fileID: 6365347986197841700}
   - component: {fileID: 8776314923620385951}
-  - component: {fileID: 5954917734935497384}
-  m_Layer: 0
+  - component: {fileID: 6441760740208907823}
+  m_Layer: 6
   m_Name: Ammo_box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1860866908277804790}
-  m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.549, y: 0, z: 2.207}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -100,13 +100,13 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.0551353, y: 0.43353096, z: 0.62653434}
   m_Center: {x: 0.0010621548, y: 0.21676542, z: -0.0019042939}
---- !u!114 &5954917734935497384
+--- !u!114 &6441760740208907823
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,3 +118,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22d3ea4703e411a4eb54c305d441048d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletBox: "\uCD1D\uC54C \uCC44\uC6B0\uAE30"

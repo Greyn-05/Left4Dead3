@@ -29,16 +29,13 @@ public class HealSpawnManager : MonoBehaviour
     {
         spawnDelay -= 1 * Time.deltaTime;
 
-        Debug.Log(spawnDelay);
         if (spawnDelay <= 0)
         {
             if (currentHealSpawnCount <= maxHealSpawnCount)
             {
-                Debug.Log("ddd");
                 HealpackSpawn();
                 currentHealSpawnCount++;
                 spawnDelay = maxSpawnDelay;
-                Debug.Log(currentHealSpawnCount);
             }
         }
     }
