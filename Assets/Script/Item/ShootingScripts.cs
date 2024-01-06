@@ -14,6 +14,7 @@ public class ShootingScripts : MonoBehaviour
     public float bulletsInTheGun;
 
     private bool reloading;
+    public bool Fire;
 
     
     public GameObject bulletSpawnPlace;
@@ -33,6 +34,7 @@ public class ShootingScripts : MonoBehaviour
         animator = GetComponent<Animator>();
         waitTillNextFire = 1;
         bulletsInTheGun = Gun.nowBulletInTheGun;
+        Fire = false;
     }
 
     private void Update()
@@ -41,22 +43,49 @@ public class ShootingScripts : MonoBehaviour
         {
             waitTillNextFire -= roundsPerSecond * Time.deltaTime;
         }
+        if (Fire)
+        {
+            if (Gun.gunStyle == GunStyle.automatic)
+            {
+                AutoShooting();
+            }
+        }
+    }
+    public void CheckAuto()
+    {
+        if (Gun.gunStyle == GunStyle.nonautomatic)
+        {
+            Shooting();
+        }
+        if (Gun.gunStyle == GunStyle.automatic)
+        {
+            AutoShooting();
+        }
     }
 
     public void Shooting()
     {
         if(waitTillNextFire <= 0)
         {
-            if (bulletsInTheGun != 0)   
+            if (bulletsInTheGun != 0)
             {
-                if (Gun.gunStyle == GunStyle.nonautomatic)
-                {
-                    ShootMethod();
-                }
-                if (Gun.gunStyle == GunStyle.automatic)
-                {
-                    AutoShootMethod();
-                }
+                ShootMethod();
+            }
+            else //no more bullet
+            {
+                reloading = true;
+                Reloading();
+            }
+        }        
+    }
+
+    public void AutoShooting()
+    {
+        if(waitTillNextFire <= 0)
+        {
+            if (bulletsInTheGun != 0)
+            {
+                AutoShootMethod();
             }
             else //no more bullet
             {
@@ -100,7 +129,7 @@ public class ShootingScripts : MonoBehaviour
                 ShotSound.Play();
             animator.SetTrigger("Shot");
             
-            waitTillNextFire = 1;
+            waitTillNextFire = 0.1f;
             bulletsInTheGun -= 1;
         }
     }
