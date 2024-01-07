@@ -18,11 +18,13 @@ public class PlayerManager : MonoBehaviour
     private PlayerControl m_playerController;
     private WeaponControl m_weaponControl;
     private PlayerAnimationManager m_animationManager;
-    private PlayerCameraManager m_cameraManager;
+    private InteractionManager m_interactionManager;
+    public PlayerCameraManager m_cameraManager;
 
     private float m_healthPoint;
     private float m_maxHp;
 
+    [HideInInspector]
     private PlayerState m_state = PlayerState.Idle;
     public GunData m_mainWeapon = null; //주무기 
     public GunData m_subWeapon = null; // 보조무기
@@ -42,14 +44,16 @@ public class PlayerManager : MonoBehaviour
         m_playerController = GetComponent<PlayerControl>();
         m_cameraManager = GetComponent<PlayerCameraManager>();
         m_animationManager = transform.GetChild(0).GetComponent<PlayerAnimationManager>();
+        m_interactionManager = GetComponent<InteractionManager>();
         //m_weaponControl = m_cameraManager.GetWeaponObj().GetComponent<WeaponControl>();
 
         m_cameraManager.Initialize();
+        m_interactionManager.Initialize();
     }
 
     private void Update()
     {
-        //hpBar.UpdateHpBar(m_healthPoint / m_maxHp); // 체력바 초기화
+        hpBar.UpdateHpBar(m_healthPoint / m_maxHp); // 체력바 초기화
 
         if (m_healthPoint <= 0)//캐릭터의 체력이 없을때
         {
@@ -77,7 +81,6 @@ public class PlayerManager : MonoBehaviour
     {
         m_healthPoint += p;
         m_healthPoint = m_healthPoint > m_maxHp ? m_maxHp : m_healthPoint;//최대 체력을 초과하면 최대치로 고정
-        hpBar.UpdateHpBar(m_healthPoint / m_maxHp); // 체력바 업데이트
     }
 
     //무기 교체

@@ -13,7 +13,7 @@ public class HitBullet : MonoBehaviour
 
     void Start()
     {
-        _camera = Camera.main;
+        _camera = PlayerManager.Instance.m_cameraManager.GetCamera1();
     }
 
     void Update()
