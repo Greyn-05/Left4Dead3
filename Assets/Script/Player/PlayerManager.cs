@@ -13,23 +13,28 @@ public enum PlayerState//캐릭터 상태
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance;
+    public HpBar hpBar;
 
-    [HideInInspector]
     private PlayerControl m_playerController;
     private WeaponControl m_weaponControl;
     private PlayerAnimationManager m_animationManager;
     private InteractionManager m_interactionManager;
+
+    [HideInInspector]
     public PlayerCameraManager m_cameraManager;
 
     private float m_healthPoint;
     private float m_maxHp;
 
-    [HideInInspector]
     private PlayerState m_state = PlayerState.Idle;
+
+    [HideInInspector]
     public GunData m_mainWeapon = null; //주무기 
+
+    [HideInInspector]
     public GunData m_subWeapon = null; // 보조무기
 
-    public HpBar hpBar;
+
 
     private void Awake()
     {
@@ -53,7 +58,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
-        //hpBar.UpdateHpBar(m_healthPoint / m_maxHp); // 체력바 초기화
+        hpBar.UpdateHpBar(m_healthPoint); // 체력바 초기화
 
         if (m_healthPoint <= 0)//캐릭터의 체력이 없을때
         {

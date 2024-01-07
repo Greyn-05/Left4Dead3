@@ -259,7 +259,8 @@ public class EnemyBehavior : MonoBehaviour
         if (distance <= AttackRange)
         {
             //플레이어 데미지 주기
-            Debug.Log("Player Hit!!!");
+            PlayerManager.Instance.AddHealthPoint(-10);
+            //Debug.Log("Player Hit!!!");
         }
 
     }
