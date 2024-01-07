@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField]
-    private int EnemyHP;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +17,8 @@ public class EnemyHealth : MonoBehaviour
     {
         
     }
+
+    
 
     private void Death()
     {

@@ -10,7 +10,8 @@ public enum EnemyBehaviorState
     wander = 1,     //배회
     suspicion = 2,  //의심
     pursuit = 3,    //추적
-    attack = 4      //공격
+    attack = 4,      //공격
+    death = 5
 }
 public class EnemyBehavior : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField]
     private float AttackRange = 0.5f;
 
+
     private EnemyBehaviorState enemyState = EnemyBehaviorState.none;
 
     private EnemyStatus status;
@@ -38,6 +40,7 @@ public class EnemyBehavior : MonoBehaviour
     public List<AudioClip> Attacksound = new List<AudioClip> { };
     public List<AudioClip> Hitsound = new List<AudioClip> { };
 
+    private int enemyHP = 100;
     private void Awake()
     {
         status = GetComponent<EnemyStatus>();
@@ -273,6 +276,22 @@ public class EnemyBehavior : MonoBehaviour
     {
         StartPursuitRange = 180;
         QuitpusuitRange = 200;
+    }
+
+    public void getHit(int Damage)
+    {
+        enemyHP -= Damage;
+
+        if (enemyHP <= 0)
+        {
+            ChangeState(EnemyBehaviorState.death);
+        }
+    }
+
+    private IEnumerator death()
+    {
+        animationController.Play("Zombie Death", -1, 0);
+        yield return new WaitForSeconds(3f);
     }
 
     private void OnDrawGizmos()
