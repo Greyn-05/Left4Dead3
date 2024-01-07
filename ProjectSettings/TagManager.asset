@@ -20,9 +20,10 @@ TagManager:
   - TransparentFX
   - Ignore Raycast
   - Water
+  - Water
   - UI
-  - Weapon
   - Player
+  - Enemy
   - 
   - 
   - 
