@@ -33,10 +33,12 @@ public class HitBullet : MonoBehaviour
 
                 if (hit.transform.tag == "Enemy")
                 {
+                    hit.transform.GetComponent<EnemyBehavior>().getHit(50);
                     Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
                     Destroy(gameObject);
                 }
             }
+
             Destroy(gameObject);
         }
         Destroy(gameObject, 0.1f);

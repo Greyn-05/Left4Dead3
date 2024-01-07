@@ -108,7 +108,6 @@ MonoBehaviour:
   walkSpeed: 2
   runSpeed: 5
   attackDamage: 10
-  defence: 10
 --- !u!195 &8762028088654850116
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -381,6 +380,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: eb9c4f47826ea404ea471ce19b7933e2, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 8a91df75e594a014095cc129bf44234f, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

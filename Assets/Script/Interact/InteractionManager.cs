@@ -53,7 +53,7 @@ public class InteractionManager : MonoBehaviour
             {
                 curInteractGameobject = null;
                 curInteractable = null;
-                interactText.gameObject.SetActive(false);
+                //interactText.gameObject.SetActive(false);
             }
         }
     }
