@@ -23,9 +23,6 @@ public class PlayerCameraManager : MonoBehaviour
     bool m_lock = true;//카메라 회전 잠금
     bool m_changeCamera = false;//3인칭 여부(Default 1인칭)
 
-    string InputX = "Mouse X";
-    string InputY = "Mouse Y";
-
     private GameObject m_cameraPosition;//모든 카메라(1,3인칭)의 위치
     private GameObject m_camera1;
     private GameObject m_camera2;

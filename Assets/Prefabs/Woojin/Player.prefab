@@ -125,9 +125,9 @@ MonoBehaviour:
     m_ActionName: PlayerControl/Look[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11500000, guid: 9553b007d591b144680ce6129d384627, type: 3}
         m_TargetAssemblyTypeName: WeaponControl, Assembly-CSharp
-        m_MethodName: Shooting
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -141,9 +141,9 @@ MonoBehaviour:
     m_ActionName: PlayerControl/Shoot[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11500000, guid: 9553b007d591b144680ce6129d384627, type: 3}
         m_TargetAssemblyTypeName: WeaponControl, Assembly-CSharp
-        m_MethodName: Reloading
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -299,7 +299,7 @@ MonoBehaviour:
   maxCheckDistance: 3
   layerMask:
     serializedVersion: 2
-    m_Bits: 352
+    m_Bits: 96
   interactText: {fileID: 0}
 --- !u!1001 &4694396408616709556
 PrefabInstance:

@@ -32,7 +32,7 @@ public class ShootingScripts : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        waitTillNextFire = 1;
+        waitTillNextFire = 0;
         bulletsInTheGun = Gun.nowBulletInTheGun;
         Fire = false;
     }
@@ -41,7 +41,7 @@ public class ShootingScripts : MonoBehaviour
     {
         if(waitTillNextFire > 0)
         {
-            waitTillNextFire -= roundsPerSecond * Time.deltaTime;
+            waitTillNextFire -= Time.deltaTime;
         }
         if (Fire)
         {

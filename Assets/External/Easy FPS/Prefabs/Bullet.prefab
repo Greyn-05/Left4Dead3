@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4e-15, y: 1.0000002, z: 2.38}
+  m_LocalPosition: {x: 0, y: 1.0000002, z: 2.38}
   m_LocalScale: {x: 0.030065566, y: 0.030065566, z: 0.030065566}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -124,4 +124,4 @@ MonoBehaviour:
   bloodEffect: {fileID: 1013274939826982, guid: ffbf169ab9dcfdc45ae14010bc82a6b2, type: 3}
   ignoreLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 120
