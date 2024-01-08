@@ -1,5 +1,6 @@
 ﻿using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum PlayerState//캐릭터 상태
 {
@@ -64,6 +65,8 @@ public class PlayerManager : MonoBehaviour
         {
             m_state = PlayerState.Dead;//캐릭터의 상태 = 죽음
             m_cameraManager.ToggleCameraLock();//카메라 회전, 움직임 고정
+            //m_cameraManager.ChangeCamera(InputAction.CallbackContext);
+         
         }
         else
         {
@@ -99,6 +102,11 @@ public class PlayerManager : MonoBehaviour
         {
             m_subWeapon = info;//권총만 따로 빼서 저장
         }
+    }
+
+    public void ToggleCamera()
+    {
+        m_cameraManager.ToggleCameraLock();
     }
 
     //회복킷 추가, 감소

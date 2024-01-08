@@ -69,6 +69,8 @@ public class SettingMenu : MonoBehaviour
 
 	public GameObject[] lineCrossHairs;
 
+    private bool m_toggleUi = false;
+
 	void Start()
 	{
         SetThemeColors();
@@ -113,7 +115,20 @@ public class SettingMenu : MonoBehaviour
 
     public void ReturnGame()
     {
-        // 다시 게임 화면으로
+        m_toggleUi = !m_toggleUi;
+
+        if (m_toggleUi)
+		{
+            SettingCanvas.SetActive(true);
+			PlayerManager.Instance.ToggleCamera();
+			Time.timeScale = 0;
+        }
+		else
+		{
+            SettingCanvas.SetActive(false);
+            PlayerManager.Instance.ToggleCamera();
+            Time.timeScale = 1;
+        }
     }
 
 	void DisablePanels()
