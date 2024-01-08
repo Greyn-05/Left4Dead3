@@ -6754,7 +6754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &334210865
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7284,7 +7284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &347658713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8034,10 +8034,6 @@ PrefabInstance:
     - target: {fileID: 6125690458037040458, guid: 337b06429d43e994f9e8cef9e6ff082c, type: 3}
       propertyPath: m_Name
       value: ZombieSpawner (9)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6125690458037040458, guid: 337b06429d43e994f9e8cef9e6ff082c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8934042812309985336, guid: 337b06429d43e994f9e8cef9e6ff082c, type: 3}
       propertyPath: Player
@@ -10241,7 +10237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &495772401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11219,7 +11215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &541444626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12136,10 +12132,6 @@ PrefabInstance:
     - target: {fileID: 6125690458037040458, guid: 337b06429d43e994f9e8cef9e6ff082c, type: 3}
       propertyPath: m_Name
       value: ZombieSpawner (11)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6125690458037040458, guid: 337b06429d43e994f9e8cef9e6ff082c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8934042812309985336, guid: 337b06429d43e994f9e8cef9e6ff082c, type: 3}
       propertyPath: Player
@@ -20318,7 +20310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &958133289
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37671,7 +37663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3855026698297166612, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
       propertyPath: layerMask.m_Bits
-      value: 352
+      value: 96
       objectReference: {fileID: 0}
     - target: {fileID: 5793397360355871155, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
       propertyPath: m_RootOrder
@@ -40720,7 +40712,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1859728094
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42037,7 +42029,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1919207689
 MonoBehaviour:
   m_ObjectHideFlags: 0
