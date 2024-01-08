@@ -58,7 +58,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
-        hpBar.UpdateHpBar(m_healthPoint); // 체력바 초기화
+        //hpBar.UpdateHpBar(m_healthPoint); // 체력바 초기화
 
         if (m_healthPoint <= 0)//캐릭터의 체력이 없을때
         {
