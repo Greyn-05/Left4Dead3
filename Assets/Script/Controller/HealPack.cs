@@ -7,8 +7,6 @@ public class HealPack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("1");
-
         if (other.gameObject.tag == "Player") 
         {
             //플레이어 힐

@@ -20,7 +20,7 @@ public class EnemyBehavior : MonoBehaviour
     private float suspicionRange = 40;
 
     [SerializeField]
-    private float StartPursuitRange= 20;
+    private float StartPursuitRange = 20;
 
     [SerializeField]
     private float QuitpursuitRange = 30;
@@ -76,7 +76,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public void ChangeState(EnemyBehaviorState newState)
     {
-        if ((enemyState == newState)&&(enemyState!=EnemyBehaviorState.attack))
+        if ((enemyState == newState) && (enemyState != EnemyBehaviorState.attack))
         {
             return;
         }
@@ -96,8 +96,8 @@ public class EnemyBehavior : MonoBehaviour
         enemyState = EnemyBehaviorState.idle;
         //animationController.MotionState = 0;
         StartCoroutine("AutoChangeFromIdleToWander");
-        
-        while ( true )
+
+        while (true)
         {
             CalculateDistanceToSelectState();
 
@@ -123,24 +123,27 @@ public class EnemyBehavior : MonoBehaviour
         float currentTime = 0;
         float MaxTime = 10;
 
-        navMeshAgent.speed = status.WalkSpeed;
 
-        navMeshAgent.SetDestination(CalculateWanderPosition());
+        if (navMeshAgent.enabled)
+        {
+            navMeshAgent.speed = status.WalkSpeed;
 
+            navMeshAgent.SetDestination(CalculateWanderPosition());
+        }
 
-        Vector3 to = new Vector3(navMeshAgent.destination.x, 0, navMeshAgent.destination.z);
+        Vector3 to = navMeshAgent.enabled ? new Vector3(navMeshAgent.destination.x, 0, navMeshAgent.destination.z) : transform.position;
         Vector3 from = new Vector3(transform.position.x, 0, transform.position.z);
         transform.rotation = Quaternion.LookRotation(to - from);
 
-        while(true)
+        while (true)
         {
             currentTime += Time.deltaTime;
             to = new Vector3(navMeshAgent.destination.x, 0, navMeshAgent.destination.z);
             from = new Vector3(transform.position.x, 0, transform.position.z);
 
-            
 
-            if (((to-from).sqrMagnitude < 1f)||(currentTime >= MaxTime))
+
+            if (((to - from).sqrMagnitude < 1f) || (currentTime >= MaxTime))
             {
                 ChangeState(EnemyBehaviorState.idle);
             }
@@ -165,7 +168,7 @@ public class EnemyBehavior : MonoBehaviour
 
         wanderdir = Random.Range(wanderdirMin, wanderdirMax);
         Vector3 targetPosition = transform.position + SetAngle(wanderRadius, wanderdir);
-        
+
         targetPosition.x = Mathf.Clamp(targetPosition.x, rangePosition.x - rangeScale.x * 0.5f, rangePosition.x + rangeScale.x * 0.5f);
         targetPosition.y = transform.position.y;
         targetPosition.z = Mathf.Clamp(targetPosition.z, rangePosition.z - rangeScale.z * 0.5f, rangePosition.z + rangeScale.z * 0.5f);
@@ -186,7 +189,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         //Debug.Log("Start pursuit");
         enemyState = EnemyBehaviorState.pursuit;
-        
+
 
         while (true)
         {
@@ -194,7 +197,8 @@ public class EnemyBehavior : MonoBehaviour
             animationController.SetAnimation(false);
             navMeshAgent.speed = status.RunSpeed;
 
-            navMeshAgent.SetDestination(TargetPlayer.position);
+            if (navMeshAgent.enabled)
+                navMeshAgent.SetDestination(TargetPlayer.position);
             //Debug.Log(navMeshAgent.destination);
 
             LookRotationToTarget();
@@ -204,7 +208,7 @@ public class EnemyBehavior : MonoBehaviour
             yield return null;
         }
 
-        
+
     }
 
     private void LookRotationToTarget()
@@ -217,22 +221,22 @@ public class EnemyBehavior : MonoBehaviour
 
     private void CalculateDistanceToSelectState()
     {
-        if(TargetPlayer==null)
+        if (TargetPlayer == null)
         {
             return;
         }
 
         float distance = Vector3.Distance(TargetPlayer.position, transform.position);
         //Debug.Log($"distance : {distance}");
-        if(distance <= AttackRange)
+        if (distance <= AttackRange)
         {
             ChangeState(EnemyBehaviorState.attack);
         }
-        else if(distance <= StartPursuitRange)
+        else if (distance <= StartPursuitRange)
         {
             ChangeState(EnemyBehaviorState.pursuit);
         }
-        else if(distance >= QuitpursuitRange)
+        else if (distance >= QuitpursuitRange)
         {
             //ChangeState(EnemyBehaviorState.wander);
         }
@@ -241,7 +245,7 @@ public class EnemyBehavior : MonoBehaviour
     private IEnumerator attack()
     {
         //Debug.Log("Start attack");
-        
+
         enemyState = EnemyBehaviorState.attack;
         animationController.Attack = (float)Random.Range(1, 5);
 
@@ -257,7 +261,7 @@ public class EnemyBehavior : MonoBehaviour
 
             CalculateDistanceToSelectState();
         }
-        
+
     }
 
     private IEnumerator StartAttack()
@@ -291,7 +295,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         enemyHP -= Damage;
 
-        if (enemyHP <= 0)
+        if ((enemyHP <= 0) && (enemyState != EnemyBehaviorState.death))
         {
             ChangeState(EnemyBehaviorState.death);
         }
@@ -299,11 +303,12 @@ public class EnemyBehavior : MonoBehaviour
 
     private IEnumerator death()
     {
+        enemyState = EnemyBehaviorState.death;
         animationController.Play("Zombie Death", -1, 0);
         boxCollider.enabled = false;
         navMeshAgent.enabled = false;
         characterController.enabled = false;
-        yield return new WaitForSeconds(3f);
+        yield return null;
     }
 
     private void OnDrawGizmos()
@@ -321,5 +326,5 @@ public class EnemyBehavior : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, AttackRange);*/
 
     }
-    
+
 }

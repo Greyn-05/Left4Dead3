@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8719324851465221212}
   - component: {fileID: 4153987702681850601}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: ReloadSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7128067719386893152, guid: 204ae77320b536d459d12c2126255a73, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d85099fefd84d429788e09001413207b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -137,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1190642314386019844}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: MuzzleSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,14 +172,13 @@ GameObject:
   - component: {fileID: 6893702067658569403}
   - component: {fileID: 8876050181366120511}
   - component: {fileID: 5804036149098540834}
-  - component: {fileID: 1652862013847547032}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &338942693994675056
 Transform:
   m_ObjectHideFlags: 0
@@ -285,6 +284,7 @@ MonoBehaviour:
   roundsPerSecond: 0
   bullet: {fileID: 8362938275791603900, guid: 9e643194477b80142bb3500631675caf, type: 3}
   bulletsInTheGun: 10
+  Fire: 0
   bulletSpawnPlace: {fileID: 5261690797358411579}
   muzzelSpawn: {fileID: 4504589664699027170}
   muzzelFlash:
@@ -295,27 +295,6 @@ MonoBehaviour:
   - {fileID: 199458, guid: 4aa4c63f0f9d6a84dbaeed6b9caeca80, type: 3}
   ShotSound: {fileID: 1462224023995658128}
   ReloadSound: {fileID: 4153987702681850601}
---- !u!65 &1652862013847547032
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4890135344148241796}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.5757724, y: 0.28711843, z: 0.060595535}
-  m_Center: {x: 0.15778355, y: -0.04859481, z: -0.000071740724}
 --- !u!1 &5261690797358411579
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +304,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3372348494032992765}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +335,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2747154558263440840}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Sounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 367108779906373421}
   - component: {fileID: 1462224023995658128}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: ShotSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
