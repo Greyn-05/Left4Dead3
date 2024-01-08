@@ -25,7 +25,7 @@ public class HitBullet : MonoBehaviour
         {
             if (decalHitWall)
             {
-                if (hit.transform.tag == "LevelPart")
+                if (hit.transform.tag == "Untagged")
                 {
                     Instantiate(decalHitWall, hit.point + hit.normal * floatInfrontOfWall, Quaternion.LookRotation(hit.normal));
                     Destroy(gameObject);

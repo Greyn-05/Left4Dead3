@@ -8,5 +8,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main/MainScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Main/Die.unity
+    guid: a6fc089d204ece146807f88a515c782b
+  - enabled: 1
+    path: Assets/Scenes/Main/BasementLab.unity
+    guid: 8a4142e45b08a0440996d6c3926be46e
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 490c87c153c39c744a3f512bd7d2751d, type: 2}

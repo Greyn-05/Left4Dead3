@@ -112,6 +112,15 @@
                     "processors": "",
                     "interactions": "Hold",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "GoBaseMent",
+                    "type": "Button",
+                    "id": "cd7f15f8-cb39-4d78-b5c6-ec0b3f5f7af7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -288,6 +297,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Setting",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dcb99f88-c6d6-4150-ba45-411617c6c238",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GoBaseMent",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

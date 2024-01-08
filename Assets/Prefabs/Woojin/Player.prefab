@@ -202,7 +202,7 @@ MonoBehaviour:
     m_ActionName: PlayerControl/ChangeCamera[/Keyboard/f5]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1520946434733811807}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EquipManager, Assembly-CSharp
         m_MethodName: ChangePistol
         m_Mode: 0
@@ -218,7 +218,7 @@ MonoBehaviour:
     m_ActionName: PlayerControl/ChangeWeapon[/Keyboard/1,/Keyboard/2]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1520946434733811807}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EquipManager, Assembly-CSharp
         m_MethodName: ChangeRifle
         m_Mode: 0
@@ -234,7 +234,7 @@ MonoBehaviour:
     m_ActionName: PlayerControl/ChangeRifle[/Keyboard/2]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1520946434733811807}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EquipManager, Assembly-CSharp
         m_MethodName: ChangeShotgun
         m_Mode: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
     m_ActionName: PlayerControl/ChangeShotgun[/Keyboard/3]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1520946434733811807}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EquipManager, Assembly-CSharp
         m_MethodName: ChangeSniper
         m_Mode: 0
@@ -265,43 +265,7 @@ MonoBehaviour:
     m_ActionId: 127150c7-82d1-43c3-83db-7a8934fe7e92
     m_ActionName: PlayerControl/ChangeSniper[/Keyboard/4]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SettingMenu, Assembly-CSharp
-        m_MethodName: ReturnGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: WeaponUI, Assembly-CSharp
-        m_MethodName: ToggleUi
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: WeaponControl, Assembly-CSharp
-        m_MethodName: ToggleEnable
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 65ed9631-6c40-4ff3-81a6-832043af70d0
     m_ActionName: PlayerControl/Setting[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
@@ -388,9 +352,9 @@ MonoBehaviour:
   m_sensitivityX: 5
   m_sensitivityY: 5
   m_maxX: 360
-  m_maxY: 50
+  m_maxY: 70
   m_minX: -360
-  m_minY: -30
+  m_minY: -20
 --- !u!114 &3855026698297166612
 MonoBehaviour:
   m_ObjectHideFlags: 0

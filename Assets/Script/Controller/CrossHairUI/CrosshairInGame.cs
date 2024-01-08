@@ -8,11 +8,11 @@ public class CrosshairInGame : MonoBehaviour
     private Image CrossHairImage;
     [SerializeField] private Color CrosshairColor;
     public Sprite[] CrossHairImages;
-    
+
     float red;
     float green;
     float blue;
-    
+
 
     private void Awake()
     {

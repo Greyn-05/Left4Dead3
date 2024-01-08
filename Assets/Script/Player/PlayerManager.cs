@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum PlayerState//캐릭터 상태
 {
@@ -43,8 +44,7 @@ public class PlayerManager : MonoBehaviour
     {
         m_maxHp = 100.0f;
         m_healthPoint = m_maxHp; // 최대 체력으로 시작
-        m_healthPoint = 1;//즉사
-
+        
         m_playerController = GetComponent<PlayerControl>();
         m_cameraManager = GetComponent<PlayerCameraManager>();
         m_animationManager = transform.GetChild(0).GetComponent<PlayerAnimationManager>();
@@ -57,6 +57,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
+        hpBar.UpdateHpBar(m_healthPoint);
         if (m_healthPoint > 0)//캐릭터의 체력이 있을 때
         {
             //SelectItem(m_playerController.GetNumKey());
@@ -74,10 +75,14 @@ public class PlayerManager : MonoBehaviour
 
             m_state = PlayerState.Dead;//캐릭터의 상태 = 죽음
             m_oneOff = false;
+            Invoke("DieScene", 3f);
         }
 
     }
-
+    void DieScene()
+    {
+        SceneManager.LoadScene("Die");
+    }
     //플레이어의 상태를 변경하는 함수
     public void SetState(PlayerState state)
     {
