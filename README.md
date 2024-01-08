@@ -25,15 +25,23 @@
 * 총을 발사했을 때 벽에 총알이 맞을 경우 탄흔이 남도록 구현
 ![pistol mark](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/7962c395-d6ed-4487-8a20-07e379f47174)![rifle mark](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/b7e6c27f-6a94-4bd6-b033-98dcab646343)![shotgun mark](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/79d27d95-afd5-4aac-bceb-504a8aa4cfbc)![sniper rifle mark](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/48223caa-922e-46b0-b438-dc5743ddde05)
 
+* 2가지 맵 제작
+![map1](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/345ef2fa-f323-4605-be76-150fdf95b582)
+![map2](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/a8838526-d4af-473f-a2fa-748b001f5548)
 
+* 상호작용하여 열 수 있는 문 구현
+![open door](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/ed17f5a7-552d-4b72-a287-59bbad51a9c2)
 
+* 좀비 생성 프리펩 구현
+  ![zombie spawner inspector](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/05692e1d-477b-4158-ad77-93b632b52ff3)
+  - 생성 좀비 수 최대, 최소 지정 + 생성 범위 지정
+  ![zombie spawn process](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/5f63f0e0-6c3d-4cec-8ae3-00418ec8d1a8)
 
-
-## 기능 세부 설명
-* 게임 시작 전 인트로
-
-
-   
+* 좀비 행동 구현
+  ![zombie wander](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/8adbf473-0c83-4084-848b-eac9d0a6b53d)
+  아무일도 없으면 주변을 방황하도록 구현
+  ![enemy chase](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/444d5e18-165a-4fc8-a905-bf0508bb7c74)
+  플레이어가 일정 범위 내로 진입하면 따라가도록 구현
 
 
 ##  기술 스택
@@ -51,32 +59,14 @@
 
 __인트로__
 
-![인트로 사진](./ReadMeImg/)
-
- __옵션__  
-
- <br/>
-
-![옵션 사진](./)
-
-* 볼륨을 조절할 수 있음
-* 볼(새)를 선택할 수 있음 
-
-
-<br/>
-
-
+![인트로 사진](![image](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/fc988078-f687-447e-abeb-a2f3958ec729))
 
 
 ### 게임 진행 화면
 
 <br/>
 
-![게임진행 사진](./Assets/Images/OptionFile.png)
+![게임진행 사진](![image](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/e8401157-cb3c-448a-8756-dc93283225bf))
 
-* 3개의 라이프로 시작
-* 벽돌깨기와 같은 방식으로 진행
-* 몬스터가 주기적으로 무한히 내려오는 형태
-* 라이프가 전부 소진되거나, 몬스터가 패들 이하까지 소환될 시 게임오버
 
 <br/>
