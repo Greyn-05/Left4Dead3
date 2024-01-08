@@ -11,6 +11,10 @@ public interface IInteractable
     string GetInteractPrompt();
     void OnInteract();
 }
+public interface IOpenDoor
+{
+    void OpenThisDoor();
+}
 
 public class InteractionManager : MonoBehaviour
 {
@@ -21,7 +25,7 @@ public class InteractionManager : MonoBehaviour
 
     private GameObject curInteractGameobject;
     private IInteractable curInteractable;
-    private OpenDoor currentDoor;
+    private IOpenDoor currentDoor;
 
     public Text interactText;
     private Camera _camera;
@@ -34,6 +38,7 @@ public class InteractionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Time.time - lastCheckTime > checkRate)
         {
             lastCheckTime = Time.time;
@@ -48,14 +53,13 @@ public class InteractionManager : MonoBehaviour
                     curInteractGameobject = hit.collider.gameObject;
                     if (curInteractGameobject.TryGetComponent<IInteractable>(out curInteractable))
                     {
-                        //curInteractable = hit.collider.GetComponent<IInteractable>();
                         SetPromptText();
                     }
-                    else if (curInteractGameobject.TryGetComponent<OpenDoor>(out currentDoor))
+                    else if (curInteractGameobject.TryGetComponent<IOpenDoor>(out currentDoor))
                     {
-                        //currentDoor = hit.collider.GetComponent<OpenDoor>();
                         SetDoorOpenTxt();
-                    }                    
+                    }
+                    
                 }
             }
             else

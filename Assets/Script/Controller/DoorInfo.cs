@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface OpenDoor
-{
-    void OpenThisDoor();
-}
-public class DoorInfo : MonoBehaviour , OpenDoor
+public class DoorInfo : MonoBehaviour, IOpenDoor
 {
     private Animator door_Animator;
-
     private void Awake()
     {
-      door_Animator = GetComponent<Animator>();
+        door_Animator = GetComponent<Animator>();
     }
     public void OpenThisDoor()
     {

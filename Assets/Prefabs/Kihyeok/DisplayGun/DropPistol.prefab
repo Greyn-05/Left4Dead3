@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2063652965362330297}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,13 +45,13 @@ GameObject:
   - component: {fileID: 4096877215313894631}
   - component: {fileID: 7752155608973346305}
   - component: {fileID: 2870523784352295525}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: DropPistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3248027912321280488
 Transform:
   m_ObjectHideFlags: 0
@@ -67,7 +67,7 @@ Transform:
   - {fileID: 1929834939083532490}
   - {fileID: 2063652965362330297}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &2299007711000164537
 MeshFilter:
@@ -189,7 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1929834939083532490}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: MuzzleSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
