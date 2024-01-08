@@ -40,6 +40,8 @@ public class EnemyBehavior : MonoBehaviour
     public List<AudioClip> Attacksound = new List<AudioClip> { };
     public List<AudioClip> Hitsound = new List<AudioClip> { };
 
+    Coroutine TestCoroutine = null;
+
     private int enemyHP = 100;
     private void Awake()
     {
@@ -75,9 +77,14 @@ public class EnemyBehavior : MonoBehaviour
             return;
         }
 
-        StopCoroutine(enemyState.ToString());
+        if(TestCoroutine != null)
+        {
+            StopCoroutine(TestCoroutine);
+        }
+        //StopCoroutine(enemyState.ToString());
         enemyState = newState;
-        StartCoroutine(enemyState.ToString());
+
+        TestCoroutine = StartCoroutine(enemyState.ToString());
     }
 
     private IEnumerator idle()
