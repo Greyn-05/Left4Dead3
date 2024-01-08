@@ -1,6 +1,4 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine;
 
 public enum PlayerState//캐릭터 상태
 {
@@ -35,7 +33,7 @@ public class PlayerManager : MonoBehaviour
     [HideInInspector]
     public GunData m_subWeapon = null; // 보조무기
 
-
+    private bool m_oneOff = true;
 
     private void Awake()
     {
@@ -43,9 +41,9 @@ public class PlayerManager : MonoBehaviour
     }
     private void Start()
     {
-        m_healthPoint = 100.0f;
         m_maxHp = 100.0f;
         m_healthPoint = m_maxHp; // 최대 체력으로 시작
+        m_healthPoint = 1;//즉사
 
         m_playerController = GetComponent<PlayerControl>();
         m_cameraManager = GetComponent<PlayerCameraManager>();
@@ -61,14 +59,9 @@ public class PlayerManager : MonoBehaviour
     {
         //hpBar.UpdateHpBar(m_healthPoint); // 체력바 초기화
 
-        if (m_healthPoint <= 0)//캐릭터의 체력이 없을때
-        {
-            m_state = PlayerState.Dead;//캐릭터의 상태 = 죽음
-            m_cameraManager.ToggleCameraLock();//카메라 회전, 움직임 고정
-            //m_cameraManager.ChangeCamera(InputAction.CallbackContext);
-         
-        }
-        else
+        m_healthPoint -= Time.deltaTime;
+
+        if (m_healthPoint > 0)//캐릭터의 체력이 있을 때
         {
             //SelectItem(m_playerController.GetNumKey());
             m_cameraManager.UpdateCamera();
@@ -76,6 +69,17 @@ public class PlayerManager : MonoBehaviour
             m_playerController.UpdateInput();
             m_animationManager.UpdateAnimation(m_state, m_playerController.GetDirection(), m_playerController.GetMagnitude(), m_playerController.IsGrounded());//캐릭터의 현재 상태에 따라 애니메이션 전환
         }
+
+        if (m_healthPoint <= 0 && m_oneOff)
+        {
+            m_cameraManager.ChangeCamera();
+            m_cameraManager.ToggleCameraLock();//카메라 회전, 움직임 고정
+            m_animationManager.DoDie();
+
+            m_state = PlayerState.Dead;//캐릭터의 상태 = 죽음
+            m_oneOff = false;
+        }
+
     }
 
     //플레이어의 상태를 변경하는 함수

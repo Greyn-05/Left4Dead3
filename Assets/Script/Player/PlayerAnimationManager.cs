@@ -24,6 +24,11 @@ public class PlayerAnimationManager : MonoBehaviour
         m_animator.SetTrigger(IsJumped);
     }
 
+    public void DoDie()
+    {
+        m_animator.SetTrigger(IsDead);
+    }
+
     //캐릭터 상태에 따라 애니메이션 전환하는 함수
     public void UpdateAnimation(PlayerState state, float angle, float magnitude, bool isground)
     {
