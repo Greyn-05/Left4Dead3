@@ -15,9 +15,10 @@ MonoBehaviour:
   gunName: "\uC18C\uCD1D"
   description: "\uC900\uC218\uD55C \uC5F0\uC0AC\uB825\uACFC \uC548\uC815\uC131"
   gunType: 1
-  gunStyle: 0
+  gunStyle: 1
   icon: {fileID: 0}
   Prefab: {fileID: 0}
   nowBulletInTheGun: 30
   maxBulletInTheGun: 30
   maxBulletAmount: 150
+  Damage: 10
