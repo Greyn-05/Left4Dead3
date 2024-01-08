@@ -34,6 +34,7 @@ public class InteractionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Time.time - lastCheckTime > checkRate)
         {
             lastCheckTime = Time.time;
@@ -43,16 +44,20 @@ public class InteractionManager : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
             {
+                Debug.Log("12121");
                 if (hit.collider.gameObject != curInteractGameobject)
                 {
+                    Debug.Log("1");
                     curInteractGameobject = hit.collider.gameObject;
                     if (curInteractGameobject.TryGetComponent<IInteractable>(out curInteractable))
                     {
                         //curInteractable = hit.collider.GetComponent<IInteractable>();
+                        Debug.Log("2");
                         SetPromptText();
                     }
                     else if (curInteractGameobject.TryGetComponent<OpenDoor>(out currentDoor))
                     {
+                        Debug.Log("3");
                         //currentDoor = hit.collider.GetComponent<OpenDoor>();
                         SetDoorOpenTxt();
                     }                    
