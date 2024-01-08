@@ -234,7 +234,7 @@ public class EnemyBehavior : MonoBehaviour
         }
         else if(distance >= QuitpursuitRange)
         {
-            //ChangeState(EnemyBehaviorState.wander);
+            ChangeState(EnemyBehaviorState.wander);
         }
     }
 
