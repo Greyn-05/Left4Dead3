@@ -223,7 +223,7 @@ public class SettingMenu : MonoBehaviour
 
     public void LoadScene()
 	{
-        SceneManager.LoadScene("Seyeon_Start"); // 씬 이름 추후 수정 필
+        SceneManager.LoadScene("MainScene"); // 메인 씬으로
 	}
 
 	public GameObject GetLineCrossHairObject(int index)
