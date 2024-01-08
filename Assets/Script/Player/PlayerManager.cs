@@ -57,10 +57,6 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
-        //hpBar.UpdateHpBar(m_healthPoint); // 체력바 초기화
-
-        m_healthPoint -= Time.deltaTime;
-
         if (m_healthPoint > 0)//캐릭터의 체력이 있을 때
         {
             //SelectItem(m_playerController.GetNumKey());
