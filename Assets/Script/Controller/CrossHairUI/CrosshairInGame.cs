@@ -6,20 +6,35 @@ using UnityEngine.UI;
 public class CrosshairInGame : MonoBehaviour
 {
     private Image CrossHairImage;
-    private Color CrosshairColor;
+    [SerializeField] private Color CrosshairColor;
     public Sprite[] CrossHairImages;
+    
+    float red;
+    float green;
+    float blue;
     
 
     private void Awake()
     {
         CrossHairImage = GetComponent<Image>();
-        CrosshairColor = CrossHairImage.color;
+        //CrosshairColor = GetComponent<Color>();
+    }
+    private void Start()
+    {
+        CrosshairColor = CrossHairImage.GetComponent<Color>();
     }
     private void Update()
-    {        
+    {
         CrossHairImage.sprite = CrossHairImages[PlayerPrefs.GetInt("CrossHairNum")];
-        CrosshairColor.r = PlayerPrefs.GetFloat("R_value");
-        CrosshairColor.g = PlayerPrefs.GetFloat("G_value");
-        CrosshairColor.b = PlayerPrefs.GetFloat("B_value");
+        red = PlayerPrefs.GetFloat("R_value");
+        green = PlayerPrefs.GetFloat("G_value");
+        blue = PlayerPrefs.GetFloat("B_value");
+
+        CrosshairColor.r = red;
+        CrosshairColor.g = green;
+        CrosshairColor.b = blue;
+        CrosshairColor.a = 1;
+
+        CrossHairImage.color = CrosshairColor;
     }
 }
