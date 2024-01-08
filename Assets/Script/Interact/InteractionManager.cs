@@ -13,7 +13,10 @@ public interface IInteractable
 }
 public interface IOpenDoor
 {
+    bool IsOpen { get; set; }
+
     void OpenThisDoor();
+    void CloseThisDoor();
 }
 
 public class InteractionManager : MonoBehaviour
@@ -38,7 +41,7 @@ public class InteractionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         if (Time.time - lastCheckTime > checkRate)
         {
             lastCheckTime = Time.time;
@@ -59,7 +62,7 @@ public class InteractionManager : MonoBehaviour
                     {
                         SetDoorOpenTxt();
                     }
-                    
+
                 }
             }
             else
@@ -80,7 +83,14 @@ public class InteractionManager : MonoBehaviour
     private void SetDoorOpenTxt()
     {
         interactText.gameObject.SetActive(true);
-        interactText.text = "<b>[E]</b> 문 열기";
+        if (!currentDoor.IsOpen)
+        {
+            interactText.text = "<b>[E]</b> 문 열기";
+        }
+        else
+        {
+            interactText.text = "<b>[E]</b> 문 닫기";
+        }
     }
 
     public void OnInteractInput(InputAction.CallbackContext callbackContext)
@@ -97,7 +107,14 @@ public class InteractionManager : MonoBehaviour
     {
         if (callbackContext.phase == InputActionPhase.Started && currentDoor != null)
         {
-            currentDoor.OpenThisDoor();
+            if (!currentDoor.IsOpen)
+            {
+                currentDoor.OpenThisDoor();
+            }
+            else
+            {
+                currentDoor.CloseThisDoor();
+            }
             curInteractGameobject = null;
             currentDoor = null;
             interactText.gameObject.SetActive(false);
