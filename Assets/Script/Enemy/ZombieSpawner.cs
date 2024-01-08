@@ -27,7 +27,7 @@ public class ZombieSpawner : MonoBehaviour
     {
         enemyCount = Random.Range(enemyCountMin, enemyCountMax + 1);
         spawnEnemy();
-        
+       
     }
 
     private void spawnEnemy()
