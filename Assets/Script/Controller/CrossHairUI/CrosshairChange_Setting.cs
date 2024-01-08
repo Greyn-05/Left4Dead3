@@ -5,11 +5,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CrosshairChange : MonoBehaviour
+public class CrosshairChange_Setting : MonoBehaviour
 {
     public Image MainCrossHair;
     public Sprite[] CrossHairImages;
-    public UIMenuManager uiMenuManager;
+    public SettingMenu settingMenu;
 
     private void Start()
     {
@@ -23,7 +23,7 @@ public class CrosshairChange : MonoBehaviour
 
         DisableAllLineCrossHairs();
 
-        GameObject lineCrossHairToActivate = uiMenuManager.GetLineCrossHairObject(crosshairNum);
+        GameObject lineCrossHairToActivate = settingMenu.GetLineCrossHairObject(crosshairNum);
 
         if (lineCrossHairToActivate != null)
         {
@@ -33,7 +33,7 @@ public class CrosshairChange : MonoBehaviour
 
     private void DisableAllLineCrossHairs()
     {
-        foreach (var lineCrossHair in uiMenuManager.lineCrossHairs)
+        foreach (var lineCrossHair in settingMenu.lineCrossHairs)
         {
             if (lineCrossHair != null)
             {
