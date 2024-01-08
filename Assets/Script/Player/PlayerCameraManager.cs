@@ -57,11 +57,11 @@ public class PlayerCameraManager : MonoBehaviour
     }
 
 
-    public void ChangeCamera(InputAction.CallbackContext context)//시점 전환 함수
+    public void ChangeCamera()//시점 전환 함수
     {
         m_changeCamera = !m_changeCamera;
 
-        if (m_changeCamera)
+        if (!m_changeCamera)
         {
             m_camera1.transform.GetChild(0).GetComponent<Camera>().enabled = true;
             m_camera2.transform.GetChild(0).GetComponent<Camera>().enabled = false;
