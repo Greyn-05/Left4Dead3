@@ -19,6 +19,8 @@ namespace SlimUI.ModernMenu
         [Tooltip("The Menu for when the PLAY button is clicked")]
         public GameObject playMenu;
         [Tooltip("The Menu for when the EXIT button is clicked")]
+		public GameObject stageMenu;
+		[Tooltip("The Menu for when the STAGE button is clicked")]
         public GameObject exitMenu;
         [Tooltip("Optional 4th Menu")]
         public GameObject extrasMenu;
@@ -85,6 +87,8 @@ namespace SlimUI.ModernMenu
         public AudioSource sliderSound;
         [Tooltip("The GameObject holding the Audio Source component for the SWOOSH SOUND when switching to the Settings Screen")]
         public AudioSource swooshSound;
+
+		public GameObject[] lineCrossHairs;
 
 		void Start()
 		{
@@ -305,6 +309,22 @@ namespace SlimUI.ModernMenu
 			#endif
 		}
 
+		public void SelectStage()
+		{
+			playMenu.SetActive(false);
+			stageMenu.SetActive(true);
+		}
+
+		public GameObject GetLineCrossHairObject(int index)
+		{
+			if (index >= 0 && index < lineCrossHairs.Length)
+			{
+				return lineCrossHairs[index];
+			}
+
+			return null;
+		}
+
 		// Load Bar synching animation
 		IEnumerator LoadAsynchronously(string sceneName)
 		{ // scene name is just the name of the current scene being loaded
@@ -320,7 +340,7 @@ namespace SlimUI.ModernMenu
 
 				if (operation.progress >= 0.9f && waitForInput)
 				{
-					loadPromptText.text = "Press " + userPromptKey.ToString().ToUpper() + " to continue";
+					loadPromptText.text = "Press ENTER to continue";
 					loadingBar.value = 1;
 
 					if (Input.GetKeyDown(userPromptKey))

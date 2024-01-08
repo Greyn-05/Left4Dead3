@@ -6,11 +6,11 @@ using UnityEngine.AI;
 public enum EnemyBehaviorState
 {
     none = -1,
-    idle = 0,       //±âº» »óÅÂ
-    wander = 1,     //¹èÈ¸
-    suspicion = 2,  //ÀÇ½É
-    pursuit = 3,    //ÃßÀû
-    attack = 4,      //°ø°Ý
+    idle = 0,       //ï¿½âº» ï¿½ï¿½ï¿½ï¿½
+    wander = 1,     //ï¿½ï¿½È¸
+    suspicion = 2,  //ï¿½Ç½ï¿½
+    pursuit = 3,    //ï¿½ï¿½ï¿½ï¿½
+    attack = 4,      //ï¿½ï¿½ï¿½ï¿½
     death = 5
 }
 public class EnemyBehavior : MonoBehaviour
@@ -266,7 +266,7 @@ public class EnemyBehavior : MonoBehaviour
         float distance = Vector3.Distance(TargetPlayer.position, transform.position);
         if (distance <= AttackRange)
         {
-            //ÇÃ·¹ÀÌ¾î µ¥¹ÌÁö ÁÖ±â
+            //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö±ï¿½
             PlayerManager.Instance.AddHealthPoint(-10);
             //Debug.Log("Player Hit!!!");
         }
