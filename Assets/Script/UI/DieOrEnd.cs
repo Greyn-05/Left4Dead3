@@ -25,6 +25,6 @@ public class DieOrEnd : MonoBehaviour
 
     public void LoadScene()
 	{
-        SceneManager.LoadScene("MainScene"); // 메인 씬으로
+        SceneManager.LoadScene("Start"); // 시작 씬으로
 	}
 }
