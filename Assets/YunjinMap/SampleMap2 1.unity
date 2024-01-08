@@ -8035,10 +8035,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieSpawner (9)
       objectReference: {fileID: 0}
-    - target: {fileID: 6125690458037040458, guid: 337b06429d43e994f9e8cef9e6ff082c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8934042812309985336, guid: 337b06429d43e994f9e8cef9e6ff082c, type: 3}
       propertyPath: Player
       value: 
@@ -12136,10 +12132,6 @@ PrefabInstance:
     - target: {fileID: 6125690458037040458, guid: 337b06429d43e994f9e8cef9e6ff082c, type: 3}
       propertyPath: m_Name
       value: ZombieSpawner (11)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6125690458037040458, guid: 337b06429d43e994f9e8cef9e6ff082c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8934042812309985336, guid: 337b06429d43e994f9e8cef9e6ff082c, type: 3}
       propertyPath: Player
@@ -37671,7 +37663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3855026698297166612, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
       propertyPath: layerMask.m_Bits
-      value: 352
+      value: 96
       objectReference: {fileID: 0}
     - target: {fileID: 5793397360355871155, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
       propertyPath: m_RootOrder
