@@ -61,14 +61,18 @@
 
 __인트로__
 
-![인트로 사진](![image](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/fc988078-f687-447e-abeb-a2f3958ec729))
+![인트로 사진]
+![스크린샷 2024-01-08 224910](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/f51bafbf-56e6-4a96-b2a2-cfff67e28428)
+
 
 
 ### 게임 진행 화면
 
 <br/>
 
-![게임진행 사진](![image](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/e8401157-cb3c-448a-8756-dc93283225bf))
+![게임진행 사진]
+![스크린샷 2024-01-08 225032](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/71d1dda4-f247-44d0-b1c6-5b5cdaa2586c)
+
 
 
 <br/>
