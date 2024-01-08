@@ -9,6 +9,7 @@ using System;
 
 public class KeyBinding : MonoBehaviour
 {
+    /*
     [Header("Action References")] // InputActionReference 타입의 jumpAction을 인스펙터에서 설정할 수 있게 함
     [SerializeField] private InputActionReference moveAction = null;
     [SerializeField] private InputActionReference interactAction = null;
@@ -177,4 +178,5 @@ public class KeyBinding : MonoBehaviour
 
         return -1;
     }
+    */
 }
