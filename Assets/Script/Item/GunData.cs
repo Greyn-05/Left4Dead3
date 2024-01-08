@@ -30,4 +30,7 @@ public class GunData : ScriptableObject
     public int nowBulletInTheGun; // 탄알집에 남아있는 탄알
     public int maxBulletInTheGun; // 탄알집에 최대로 채울 수 있는 수
     public int maxBulletAmount; // 소유중인 탄알 수
+
+    [Header("GunDamage")]
+    public int Damage;
 }

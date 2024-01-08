@@ -104,6 +104,11 @@ public class PlayerCameraManager : MonoBehaviour
         }
     }
 
+    public Camera GetCamera1()
+    {
+        return m_camera1.transform.GetChild(0).GetComponent<Camera>();
+    }
+
     public Quaternion GetDirection()//카메라 각도 리턴, y값만
     {
         return Quaternion.Euler(0, m_camera1.transform.rotation.eulerAngles.y, 0);//아무 카메라든 상관없음 Y축 rotation

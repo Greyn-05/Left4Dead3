@@ -10,7 +10,8 @@ public enum EnemyBehaviorState
     wander = 1,     //배회
     suspicion = 2,  //의심
     pursuit = 3,    //추적
-    attack = 4      //공격
+    attack = 4,      //공격
+    death = 5
 }
 public class EnemyBehavior : MonoBehaviour
 {
@@ -22,10 +23,11 @@ public class EnemyBehavior : MonoBehaviour
     private float StartPursuitRange= 20;
 
     [SerializeField]
-    private float QuitpusuitRange = 30;
+    private float QuitpursuitRange = 30;
 
     [SerializeField]
     private float AttackRange = 0.5f;
+
 
     private EnemyBehaviorState enemyState = EnemyBehaviorState.none;
 
@@ -38,6 +40,9 @@ public class EnemyBehavior : MonoBehaviour
     public List<AudioClip> Attacksound = new List<AudioClip> { };
     public List<AudioClip> Hitsound = new List<AudioClip> { };
 
+    Coroutine TestCoroutine = null;
+
+    private int enemyHP = 100;
     private void Awake()
     {
         status = GetComponent<EnemyStatus>();
@@ -72,16 +77,21 @@ public class EnemyBehavior : MonoBehaviour
             return;
         }
 
-        StopCoroutine(enemyState.ToString());
+        if(TestCoroutine != null)
+        {
+            StopCoroutine(TestCoroutine);
+        }
+        //StopCoroutine(enemyState.ToString());
         enemyState = newState;
-        StartCoroutine(enemyState.ToString());
+
+        TestCoroutine = StartCoroutine(enemyState.ToString());
     }
 
     private IEnumerator idle()
     {
-        Debug.Log("Start Idle");
+        //Debug.Log("Start Idle");
         enemyState = EnemyBehaviorState.idle;
-        animationController.MotionState = 0;
+        //animationController.MotionState = 0;
         StartCoroutine("AutoChangeFromIdleToWander");
         
         while ( true )
@@ -103,7 +113,7 @@ public class EnemyBehavior : MonoBehaviour
 
     private IEnumerator wander()
     {
-        Debug.Log("Start Wander");
+        //Debug.Log("Start Wander");
         enemyState = EnemyBehaviorState.wander;
         animationController.RunSpeed = 1f;
         animationController.SetAnimation(false);
@@ -133,8 +143,6 @@ public class EnemyBehavior : MonoBehaviour
             }
 
             //Debug.Log((to - from).sqrMagnitude);
-            
-            
             CalculateDistanceToSelectState();
 
             yield return null;
@@ -173,7 +181,7 @@ public class EnemyBehavior : MonoBehaviour
 
     private IEnumerator pursuit()
     {
-        Debug.Log("Start pursuit");
+        //Debug.Log("Start pursuit");
         enemyState = EnemyBehaviorState.pursuit;
         
 
@@ -221,15 +229,15 @@ public class EnemyBehavior : MonoBehaviour
         {
             ChangeState(EnemyBehaviorState.pursuit);
         }
-        else if(distance >= QuitpusuitRange)
+        else if(distance >= QuitpursuitRange)
         {
-            ChangeState(EnemyBehaviorState.wander);
+            //ChangeState(EnemyBehaviorState.wander);
         }
     }
 
     private IEnumerator attack()
     {
-        Debug.Log("Start attack");
+        //Debug.Log("Start attack");
         
         enemyState = EnemyBehaviorState.attack;
         animationController.Attack = (float)Random.Range(1, 5);
@@ -256,7 +264,8 @@ public class EnemyBehavior : MonoBehaviour
         if (distance <= AttackRange)
         {
             //플레이어 데미지 주기
-            Debug.Log("Player Hit!!!");
+            PlayerManager.Instance.AddHealthPoint(-10);
+            //Debug.Log("Player Hit!!!");
         }
 
     }
@@ -272,7 +281,23 @@ public class EnemyBehavior : MonoBehaviour
     private void RageMode()
     {
         StartPursuitRange = 180;
-        QuitpusuitRange = 200;
+        QuitpursuitRange = 200;
+    }
+
+    public void getHit(int Damage)
+    {
+        enemyHP -= Damage;
+
+        if (enemyHP <= 0)
+        {
+            ChangeState(EnemyBehaviorState.death);
+        }
+    }
+
+    private IEnumerator death()
+    {
+        animationController.Play("Zombie Death", -1, 0);
+        yield return new WaitForSeconds(3f);
     }
 
     private void OnDrawGizmos()
@@ -280,14 +305,14 @@ public class EnemyBehavior : MonoBehaviour
         //Gizmos.color = Color.blue;
         //Gizmos.DrawRay(transform.position, navMeshAgent.destination - transform.position);
 
-        Gizmos.color = Color.red;
+        /*Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, StartPursuitRange);
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, QuitpusuitRange);
 
         Gizmos.color = Color.black;
-        Gizmos.DrawWireSphere(transform.position, AttackRange);
+        Gizmos.DrawWireSphere(transform.position, AttackRange);*/
 
     }
     

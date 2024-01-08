@@ -25,11 +25,9 @@ public class InteractionManager : MonoBehaviour
     public Text interactText;
     private Camera _camera;
 
-
-    // Start is called before the first frame update
-    void Start()
+    public void Initialize()
     {
-        _camera = Camera.main;
+        _camera = PlayerManager.Instance.m_cameraManager.GetCamera1();
     }
 
     // Update is called once per frame
@@ -55,7 +53,7 @@ public class InteractionManager : MonoBehaviour
             {
                 curInteractGameobject = null;
                 curInteractable = null;
-                interactText.gameObject.SetActive(false);
+                //interactText.gameObject.SetActive(false);
             }
         }
     }

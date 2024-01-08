@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HealPack : MonoBehaviour
-{
-    
+{ 
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        Debug.Log("1");
+
+        if (other.gameObject.tag == "Player") 
         {
             //플레이어 힐
             PlayerManager.Instance.AddHealthPoint(50f);
 
-            HealSpawnManager.instance.currentHealSpawnCount--;
+            //HealSpawnManager.instance.currentHealSpawnCount--;
             Destroy(gameObject);
         }
     }

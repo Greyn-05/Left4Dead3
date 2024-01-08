@@ -21,3 +21,4 @@ MonoBehaviour:
   nowBulletInTheGun: 5
   maxBulletInTheGun: 5
   maxBulletAmount: 20
+  Damage: 50
