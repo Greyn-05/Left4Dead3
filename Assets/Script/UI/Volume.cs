@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+// using System.Collections;
+// using System.Collections.Generic;
+// using UnityEngine;
+// using UnityEngine.Audio;
+// using UnityEngine.UI;
 
-public class Volume : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+// public class Volume : MonoBehaviour
+// {
+//     public AudioMixer audioMixer;
+//     public Slider audioSlider;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
+//     float volume = audioSlider.value;
+// }

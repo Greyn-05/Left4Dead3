@@ -67,6 +67,8 @@ public class SettingMenu : MonoBehaviour
     [Tooltip("The GameObject holding the Audio Source component for the SWOOSH SOUND when switching to the Settings Screen")]
     public AudioSource swooshSound;
 
+	public GameObject[] lineCrossHairs;
+
 	void Start()
 	{
         SetThemeColors();
@@ -222,6 +224,16 @@ public class SettingMenu : MonoBehaviour
     public void LoadScene()
 	{
         SceneManager.LoadScene("Seyeon_Start"); // 씬 이름 추후 수정 필
+	}
+
+	public GameObject GetLineCrossHairObject(int index)
+	{
+		if (index >= 0 && index < lineCrossHairs.Length)
+		{
+			return lineCrossHairs[index];
+		}
+
+		return null;
 	}
 
 	// public void QuitGame()
