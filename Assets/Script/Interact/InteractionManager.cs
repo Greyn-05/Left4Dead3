@@ -11,6 +11,10 @@ public interface IInteractable
     string GetInteractPrompt();
     void OnInteract();
 }
+public interface IOpenDoor
+{
+    void OpenThisDoor();
+}
 
 public class InteractionManager : MonoBehaviour
 {
@@ -21,7 +25,7 @@ public class InteractionManager : MonoBehaviour
 
     private GameObject curInteractGameobject;
     private IInteractable curInteractable;
-    private OpenDoor currentDoor;
+    private IOpenDoor currentDoor;
 
     public Text interactText;
     private Camera _camera;
@@ -44,23 +48,18 @@ public class InteractionManager : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
             {
-                Debug.Log("12121");
                 if (hit.collider.gameObject != curInteractGameobject)
                 {
-                    Debug.Log("1");
                     curInteractGameobject = hit.collider.gameObject;
                     if (curInteractGameobject.TryGetComponent<IInteractable>(out curInteractable))
                     {
-                        //curInteractable = hit.collider.GetComponent<IInteractable>();
-                        Debug.Log("2");
                         SetPromptText();
                     }
-                    else if (curInteractGameobject.TryGetComponent<OpenDoor>(out currentDoor))
+                    else if (curInteractGameobject.TryGetComponent<IOpenDoor>(out currentDoor))
                     {
-                        Debug.Log("3");
-                        //currentDoor = hit.collider.GetComponent<OpenDoor>();
                         SetDoorOpenTxt();
-                    }                    
+                    }
+                    
                 }
             }
             else

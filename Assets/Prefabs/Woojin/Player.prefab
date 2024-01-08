@@ -93,6 +93,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3855026698297166612}
+        m_TargetAssemblyTypeName: InteractionManager, Assembly-CSharp
+        m_MethodName: OpenDoorInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: fcdec9e7-8347-4920-8c76-18b7fff94762
     m_ActionName: PlayerControl/Interact[/Keyboard/e]
   - m_PersistentCalls:
@@ -187,6 +199,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: dd1628e9-57a6-44d6-9439-5c9be60bf581
     m_ActionName: PlayerControl/ChangeCamera[/Keyboard/f5]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9f07a3a9-5c16-4cc6-b178-087c4aeeabbf
+    m_ActionName: PlayerControl/ChangeWeapon[/Keyboard/1,/Keyboard/2]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControl
@@ -245,9 +261,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65126d962c364fa47ae9baa6d1f6b9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpBar: {fileID: 0}
+  m_cameraManager: {fileID: 0}
   m_mainWeapon: {fileID: 0}
   m_subWeapon: {fileID: 0}
-  hpBar: {fileID: 0}
 --- !u!114 &2043817413033457077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,7 +299,7 @@ MonoBehaviour:
   maxCheckDistance: 3
   layerMask:
     serializedVersion: 2
-    m_Bits: 224
+    m_Bits: 352
   interactText: {fileID: 0}
 --- !u!1001 &4694396408616709556
 PrefabInstance:
@@ -601,10 +618,9 @@ PrefabInstance:
       value: "\nBinding warning: Some generic clip(s) animate transforms that are
         already bound by a Humanoid avatar. These transforms can only be changed
         by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
-        'mixamorig:LeftHandThumb2'\n\tTransform 'mixamorig:LeftHandIndex1'\n\tTransform
-        'mixamorig:LeftHandPinky2'\n\tTransform 'mixamorig:RightHandRing2'\n\tTransform
-        'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform 'mixamorig:LeftHandThumb3'\n\tTransform
-        'mixamorig:RightArm'\n\tand more ...\n\tFrom animation clip 'Walking To Dying'\n\tFrom
+        'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform 'mixamorig:RightArm'\n\tTransform
+        'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftShoulder'\n\tTransform 'mixamorig:RightFoot'\n\tTransform
+        'mixamorig:Head'\n\tTransform 'mixamorig:LeftUpLeg'\n\tand more ...\n\tFrom
         animation clip 'Silly Dancing'"
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: a226c16ab0d1e4e48b53e6d96ddc2891, type: 3}
