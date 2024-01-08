@@ -69,13 +69,40 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ChangeWeapon",
-                    "type": "Value",
+                    "name": "ChangePistol",
+                    "type": "Button",
                     "id": "9f07a3a9-5c16-4cc6-b178-087c4aeeabbf",
-                    "expectedControlType": "Integer",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeRifle",
+                    "type": "Button",
+                    "id": "33ef5e4f-6276-49d6-8194-207b0bfc55b7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeShotgun",
+                    "type": "Button",
+                    "id": "90e09645-66c7-44b7-a6b6-cb402d9686bf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeSniper",
+                    "type": "Button",
+                    "id": "127150c7-82d1-43c3-83db-7a8934fe7e92",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -201,37 +228,48 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Two Modifiers",
-                    "id": "ee30c9db-a16f-4fc5-b290-cfe6540345e6",
-                    "path": "TwoModifiers",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChangeWeapon",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier1",
-                    "id": "f53fa247-2c83-48d7-9774-440915b24426",
+                    "name": "",
+                    "id": "87578766-fb50-4082-969e-e5be72675a11",
                     "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChangeWeapon",
+                    "action": "ChangePistol",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "modifier2",
-                    "id": "cb0caf55-1cdf-43e6-98f1-c617a6d2d557",
+                    "name": "",
+                    "id": "d18d0d44-2776-4c35-8e17-640d08748899",
                     "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChangeWeapon",
+                    "action": "ChangeRifle",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba161d36-311f-4b97-a969-175605eb5c3a",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeShotgun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "62f02d9b-3c04-4caf-a84c-cebbdbcc8e0a",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeSniper",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

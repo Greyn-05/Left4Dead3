@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3331241238434580287}
   - component: {fileID: 2043817413033457077}
   - component: {fileID: 3855026698297166612}
+  - component: {fileID: 1520946434733811807}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -125,9 +126,9 @@ MonoBehaviour:
     m_ActionName: PlayerControl/Look[/Mouse/delta]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 9553b007d591b144680ce6129d384627, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WeaponControl, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: Shooting
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -141,9 +142,9 @@ MonoBehaviour:
     m_ActionName: PlayerControl/Shoot[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 9553b007d591b144680ce6129d384627, type: 3}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WeaponControl, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: Reloading
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -200,9 +201,69 @@ MonoBehaviour:
     m_ActionId: dd1628e9-57a6-44d6-9439-5c9be60bf581
     m_ActionName: PlayerControl/ChangeCamera[/Keyboard/f5]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1520946434733811807}
+        m_TargetAssemblyTypeName: EquipManager, Assembly-CSharp
+        m_MethodName: ChangePistol
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 9f07a3a9-5c16-4cc6-b178-087c4aeeabbf
     m_ActionName: PlayerControl/ChangeWeapon[/Keyboard/1,/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1520946434733811807}
+        m_TargetAssemblyTypeName: EquipManager, Assembly-CSharp
+        m_MethodName: ChangeRifle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 33ef5e4f-6276-49d6-8194-207b0bfc55b7
+    m_ActionName: PlayerControl/ChangeRifle[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1520946434733811807}
+        m_TargetAssemblyTypeName: EquipManager, Assembly-CSharp
+        m_MethodName: ChangeShotgun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 90e09645-66c7-44b7-a6b6-cb402d9686bf
+    m_ActionName: PlayerControl/ChangeShotgun[/Keyboard/3]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1520946434733811807}
+        m_TargetAssemblyTypeName: EquipManager, Assembly-CSharp
+        m_MethodName: ChangeSniper
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 127150c7-82d1-43c3-83db-7a8934fe7e92
+    m_ActionName: PlayerControl/ChangeSniper[/Keyboard/4]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControl
@@ -299,8 +360,24 @@ MonoBehaviour:
   maxCheckDistance: 3
   layerMask:
     serializedVersion: 2
-    m_Bits: 96
+    m_Bits: 352
   interactText: {fileID: 0}
+--- !u!114 &1520946434733811807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663202113102665429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4350291ca50798345960308885c4d7ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Pistol: {fileID: 0}
+  Rifle: {fileID: 0}
+  Shotgun: {fileID: 0}
+  Sniper: {fileID: 0}
 --- !u!1001 &4694396408616709556
 PrefabInstance:
   m_ObjectHideFlags: 0

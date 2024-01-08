@@ -15,7 +15,38 @@ public class EquipManager : MonoBehaviour
     {
         if (callbackContext.phase == InputActionPhase.Started)
         {
-
+            Pistol.SetActive (true);
+            Rifle.SetActive(false); 
+            Shotgun.SetActive (false); 
+            Sniper.SetActive (false);
+        }
+    }
+    public void ChangeRifle (InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.phase == InputActionPhase.Started)
+        {
+            Pistol.SetActive(false);
+            Rifle.SetActive(true);
+            Shotgun.SetActive(false);
+            Sniper.SetActive(false);
+        }
+    }public void ChangeShotgun (InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.phase == InputActionPhase.Started)
+        {
+            Pistol.SetActive(false);
+            Rifle.SetActive(false);
+            Shotgun.SetActive(true);
+            Sniper.SetActive(false);
+        }
+    }public void ChangeSniper (InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.phase == InputActionPhase.Started)
+        {
+            Pistol.SetActive(false);
+            Rifle.SetActive(false);
+            Shotgun.SetActive(false);
+            Sniper.SetActive(true);
         }
     }
 
