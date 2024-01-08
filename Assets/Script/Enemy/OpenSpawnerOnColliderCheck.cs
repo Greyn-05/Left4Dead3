@@ -25,4 +25,16 @@ public class OpenSpawnerOnColliderCheck : MonoBehaviour
             }
         }
     }
+    /*
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            foreach (GameObject obj in spawners)
+            {
+                obj.SetActive(false);
+            }
+        }
+    }
+    */
 }
