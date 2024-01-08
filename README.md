@@ -34,14 +34,16 @@
 
 * 좀비 생성 프리펩 구현
   ![zombie spawner inspector](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/05692e1d-477b-4158-ad77-93b632b52ff3)
-  - 생성 좀비 수 최대, 최소 지정 + 생성 범위 지정
+  *생성 좀비 수 최대, 최소 지정 + 생성 범위 지정
   ![zombie spawn process](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/5f63f0e0-6c3d-4cec-8ae3-00418ec8d1a8)
 
 * 좀비 행동 구현
+* 
   ![zombie wander](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/8adbf473-0c83-4084-848b-eac9d0a6b53d)
-  아무일도 없으면 주변을 방황하도록 구현
+
+* 아무일도 없으면 주변을 방황하도록 구현
   ![enemy chase](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/444d5e18-165a-4fc8-a905-bf0508bb7c74)
-  플레이어가 일정 범위 내로 진입하면 따라가도록 구현
+* 플레이어가 일정 범위 내로 진입하면 따라가도록 구현
 
 
 ##  기술 스택
