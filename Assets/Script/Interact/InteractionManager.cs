@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public interface IInteractable
@@ -64,6 +65,10 @@ public class InteractionManager : MonoBehaviour
                     {
                         SetDoorOpenTxt();
                     }
+                    else if(curInteractGameobject.tag == "BasementDoor")
+                    {
+                        SetBasementDoorTxt();
+                    }
 
                 }
             }
@@ -72,37 +77,52 @@ public class InteractionManager : MonoBehaviour
                 curInteractGameobject = null;
                 curInteractable = null;
                 currentDoor = null;
-                //interactText.gameObject.SetActive(false);
+                interactText.gameObject.SetActive(false);
             }
         }
     }
 
+    private void SetBasementDoorTxt()
+    {
+        interactText.gameObject.SetActive(true);
+        interactText.text = "<b>[E]</b> 지하 연구실로 이동하기";
+    }
+
     private void SetPromptText()
     {
-        //interactText.gameObject.SetActive(true);
-        //interactText.text = string.Format("<b>[E]</b> {0}", curInteractable.GetInteractPrompt());
+        interactText.gameObject.SetActive(true);
+        interactText.text = string.Format("<b>[E]</b> {0}", curInteractable.GetInteractPrompt());
     }
     private void SetDoorOpenTxt()
     {
-        //interactText.gameObject.SetActive(true);
+        interactText.gameObject.SetActive(true);
         if (!currentDoor.IsOpen)
         {
-            //interactText.text = "<b>[E]</b> 문 열기";
+            interactText.text = "<b>[E]</b> 문 열기";
         }
         else
         {
-            //interactText.text = "<b>[E]</b> 문 닫기";
+            interactText.text = "<b>[E]</b> 문 닫기";
         }
     }
 
     public void OnInteractInput(InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.phase == InputActionPhase.Started && curInteractGameobject.CompareTag("BasementDoor"))
+        {
+            curInteractGameobject = null;
+            interactText.gameObject.SetActive(false);
+            SceneManager.LoadScene("Stage2"); //연구실로 이동
+        }
+    }
+    public void OnBasementDoorInput(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.phase == InputActionPhase.Started && curInteractable != null)
         {
             curInteractable.OnInteract();
             curInteractGameobject = null;
             curInteractable = null;
-            //interactText.gameObject.SetActive(false);
+            interactText.gameObject.SetActive(false);
         }
     }
     public void OpenDoorInput(InputAction.CallbackContext callbackContext)
@@ -119,7 +139,7 @@ public class InteractionManager : MonoBehaviour
             }
             curInteractGameobject = null;
             currentDoor = null;
-            //interactText.gameObject.SetActive(false);
+            interactText.gameObject.SetActive(false);
         }
     }
 }
