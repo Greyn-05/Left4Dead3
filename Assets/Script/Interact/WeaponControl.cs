@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class WeaponControl : MonoBehaviour
 {
     private ShootingScripts shootingScripts;
+    private bool m_enable = true;
 
     private void Awake()
     {
@@ -14,22 +13,24 @@ public class WeaponControl : MonoBehaviour
 
     public void Shooting(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.phase == InputActionPhase.Started)
+        if (m_enable)
         {
-            shootingScripts = GetComponentInChildren<ShootingScripts>();
-            shootingScripts.CheckAuto();
+            if (callbackContext.phase == InputActionPhase.Started)
+            {
+                shootingScripts = GetComponentInChildren<ShootingScripts>();
+                shootingScripts.CheckAuto();
+            }
+            else if (callbackContext.phase == InputActionPhase.Performed)
+            {
+                shootingScripts = GetComponentInChildren<ShootingScripts>();
+                shootingScripts.CheckAuto();
+                shootingScripts.Fire = true;
+            }
+            else if (callbackContext.phase == InputActionPhase.Canceled)
+            {
+                shootingScripts.Fire = false;
+            }
         }
-        else if (callbackContext.phase == InputActionPhase.Performed)
-        {
-            shootingScripts = GetComponentInChildren<ShootingScripts>();
-            shootingScripts.CheckAuto();
-            shootingScripts.Fire = true;
-        }
-        else if (callbackContext.phase == InputActionPhase.Canceled)
-        {
-            shootingScripts.Fire = false;
-        }
-
     }
 
     public void Reloading(InputAction.CallbackContext callbackContext)
@@ -40,5 +41,10 @@ public class WeaponControl : MonoBehaviour
             shootingScripts.Reloading();
         }
     }
-    
+
+    public void ToggleEnable()
+    {
+        m_enable = !m_enable;
+    }
+
 }

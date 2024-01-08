@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class PlayerCameraManager : MonoBehaviour
 {
 
+    public InputAction m_action;
+
     [Header("MouseSensitivity")]
     public float m_sensitivityX = 5f;
     public float m_sensitivityY = 5f;

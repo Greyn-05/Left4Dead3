@@ -13,7 +13,7 @@ public class CrosshairChange_Setting : MonoBehaviour
 
     private void Start()
     {
-
+        MainCrossHair.sprite = CrossHairImages[PlayerPrefs.GetInt("CrossHairNum")];
     }
 
     public void ChangeBtn(int crosshairNum)

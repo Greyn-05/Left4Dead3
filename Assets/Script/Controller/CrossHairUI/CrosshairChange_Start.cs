@@ -11,9 +11,9 @@ public class CrosshairChange_Start : MonoBehaviour
     public Sprite[] CrossHairImages;
     public UIMenuManager uiMenuManager;
 
-    private void Start()
+    private void Update()
     {
-
+        MainCrossHair.sprite = CrossHairImages[PlayerPrefs.GetInt("CrossHairNum")]; 
     }
 
     public void ChangeBtn(int crosshairNum)

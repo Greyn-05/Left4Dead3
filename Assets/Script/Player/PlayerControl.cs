@@ -5,15 +5,9 @@ public class PlayerControl : MonoBehaviour
 {
     public float m_speed = 1.0f;
 
-    [Header("ChangeCameraKey")]
-    public KeyCode m_keyF5 = KeyCode.F5;
-
-    [Header("JumpKey")]
-    public KeyCode m_keySpace = KeyCode.Space;
-
     [HideInInspector]
     private CharacterController m_cc;
-
+    
     private float m_movementY = 0.0f;//점프구현을 위해 Y방향은 따로 
     private Vector3 m_movement;//캐릭터 Transform 기준 움직이려는 방향
     private Vector3 m_movePosition;//World Transform 기준 움직이게 하려는 방향

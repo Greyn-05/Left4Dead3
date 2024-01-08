@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public interface IInteractable
@@ -27,7 +28,7 @@ public class InteractionManager : MonoBehaviour
     public LayerMask layerMask;
 
     private GameObject curInteractGameobject;
-    private IInteractable curInteractable;
+    //private IInteractable curInteractable;
     private IOpenDoor currentDoor;
 
     public Text interactText;
@@ -56,13 +57,17 @@ public class InteractionManager : MonoBehaviour
                 if (hit.collider.gameObject != curInteractGameobject)
                 {
                     curInteractGameobject = hit.collider.gameObject;
-                    if (curInteractGameobject.TryGetComponent<IInteractable>(out curInteractable))
-                    {
-                        SetPromptText();
-                    }
-                    else if (curInteractGameobject.TryGetComponent<IOpenDoor>(out currentDoor))
+                    //if (curInteractGameobject.TryGetComponent<IInteractable>(out curInteractable))
+                    //{
+                    //    SetPromptText();
+                    //}
+                    if (curInteractGameobject.TryGetComponent<IOpenDoor>(out currentDoor))
                     {
                         SetDoorOpenTxt();
+                    }
+                    else if(curInteractGameobject.tag == "BasementDoor")
+                    {
+                        SetBasementDoorTxt();
                     }
 
                 }
@@ -70,41 +75,56 @@ public class InteractionManager : MonoBehaviour
             else
             {
                 curInteractGameobject = null;
-                curInteractable = null;
+                //curInteractable = null;
                 currentDoor = null;
-                //interactText.gameObject.SetActive(false);
+                interactText.gameObject.SetActive(false);
             }
         }
     }
 
-    private void SetPromptText()
+    private void SetBasementDoorTxt()
     {
-        //interactText.gameObject.SetActive(true);
-        //interactText.text = string.Format("<b>[E]</b> {0}", curInteractable.GetInteractPrompt());
+        interactText.gameObject.SetActive(true);
+        interactText.text = "<b>[5]</b> 지하 연구실로 이동하기";
     }
+
+    //private void SetPromptText()
+    //{
+    //    interactText.gameObject.SetActive(true);
+    //    interactText.text = string.Format("<b>[E]</b> {0}", curInteractable.GetInteractPrompt());
+    //}
     private void SetDoorOpenTxt()
     {
-        //interactText.gameObject.SetActive(true);
+        interactText.gameObject.SetActive(true);
         if (!currentDoor.IsOpen)
         {
-            //interactText.text = "<b>[E]</b> 문 열기";
+            interactText.text = "<b>[E]</b> 문 열기";
         }
         else
         {
-            //interactText.text = "<b>[E]</b> 문 닫기";
+            interactText.text = "<b>[E]</b> 문 닫기";
         }
     }
 
-    public void OnInteractInput(InputAction.CallbackContext callbackContext)
+    public void OnBasementDoorInput(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.phase == InputActionPhase.Started && curInteractable != null)
+        if (curInteractGameobject.CompareTag("BasementDoor") && callbackContext.phase == InputActionPhase.Started)
         {
-            curInteractable.OnInteract();
             curInteractGameobject = null;
-            curInteractable = null;
-            //interactText.gameObject.SetActive(false);
+            interactText.gameObject.SetActive(false);
+            SceneManager.LoadScene("BasementLab"); //연구실로 이동
         }
     }
+    //public void OnInteractInput(InputAction.CallbackContext callbackContext)    
+    //{
+    //    if (callbackContext.phase == InputActionPhase.Started && curInteractable != null)
+    //    {
+    //        curInteractable.OnInteract();
+    //        curInteractGameobject = null;
+    //        curInteractable = null;
+    //        interactText.gameObject.SetActive(false);
+    //    }
+    //}
     public void OpenDoorInput(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.phase == InputActionPhase.Started && currentDoor != null)
@@ -119,7 +139,7 @@ public class InteractionManager : MonoBehaviour
             }
             curInteractGameobject = null;
             currentDoor = null;
-            //interactText.gameObject.SetActive(false);
+            interactText.gameObject.SetActive(false);
         }
     }
 }

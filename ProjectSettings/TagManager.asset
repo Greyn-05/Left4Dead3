@@ -12,6 +12,7 @@ TagManager:
   - BulletSpawn
   - SecondCamera
   - UI
+  - BasementDoor
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Player
   - Enemy
   - Door
-  - 
+  - BasementDoor
   - 
   - 
   - 
