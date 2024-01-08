@@ -17,7 +17,7 @@ MonoBehaviour:
   gunType: 2
   gunStyle: 0
   icon: {fileID: 0}
-  Prefab: {fileID: 0}
+  DropPrefab: {fileID: 6598785008990959689, guid: ee40e53a909960d4b8a3af86de9940b5, type: 3}
   nowBulletInTheGun: 8
   maxBulletInTheGun: 8
   maxBulletAmount: 40

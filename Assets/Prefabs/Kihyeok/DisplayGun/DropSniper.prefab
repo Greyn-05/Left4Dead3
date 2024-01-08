@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 1946974113669307641}
   - component: {fileID: -7817863892705812470}
   m_Layer: 6
-  m_Name: ShowSniper
+  m_Name: DropSniper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
