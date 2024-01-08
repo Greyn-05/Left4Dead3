@@ -21,6 +21,7 @@ public class InteractionManager : MonoBehaviour
 
     private GameObject curInteractGameobject;
     private IInteractable curInteractable;
+    private OpenDoor currentDoor;
 
     public Text interactText;
     private Camera _camera;
@@ -45,15 +46,24 @@ public class InteractionManager : MonoBehaviour
                 if (hit.collider.gameObject != curInteractGameobject)
                 {
                     curInteractGameobject = hit.collider.gameObject;
-                    curInteractable = hit.collider.GetComponent<IInteractable>();
-                    SetPromptText();
+                    if (curInteractGameobject.TryGetComponent<IInteractable>(out curInteractable))
+                    {
+                        //curInteractable = hit.collider.GetComponent<IInteractable>();
+                        SetPromptText();
+                    }
+                    else if (curInteractGameobject.TryGetComponent<OpenDoor>(out currentDoor))
+                    {
+                        //currentDoor = hit.collider.GetComponent<OpenDoor>();
+                        SetDoorOpenTxt();
+                    }                    
                 }
             }
             else
             {
                 curInteractGameobject = null;
                 curInteractable = null;
-                //interactText.gameObject.SetActive(false);
+                currentDoor = null;
+                interactText.gameObject.SetActive(false);
             }
         }
     }
@@ -61,9 +71,12 @@ public class InteractionManager : MonoBehaviour
     private void SetPromptText()
     {
         interactText.gameObject.SetActive(true);
-        Debug.Log("setactive");
         interactText.text = string.Format("<b>[E]</b> {0}", curInteractable.GetInteractPrompt());
-        Debug.Log(interactText.text);        
+    }
+    private void SetDoorOpenTxt()
+    {
+        interactText.gameObject.SetActive(true);
+        interactText.text = "<b>[E]</b> 문 열기";
     }
 
     public void OnInteractInput(InputAction.CallbackContext callbackContext)
@@ -73,6 +86,16 @@ public class InteractionManager : MonoBehaviour
             curInteractable.OnInteract();
             curInteractGameobject = null;
             curInteractable = null;
+            interactText.gameObject.SetActive(false);
+        }
+    }
+    public void OpenDoorInput(InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.phase == InputActionPhase.Started && currentDoor != null)
+        {
+            currentDoor.OpenThisDoor();
+            curInteractGameobject = null;
+            currentDoor = null;
             interactText.gameObject.SetActive(false);
         }
     }

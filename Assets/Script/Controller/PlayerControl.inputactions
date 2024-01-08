@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeWeapon",
+                    "type": "Value",
+                    "id": "9f07a3a9-5c16-4cc6-b178-087c4aeeabbf",
+                    "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -190,6 +199,39 @@
                     "action": "ChangeCamera",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "Two Modifiers",
+                    "id": "ee30c9db-a16f-4fc5-b290-cfe6540345e6",
+                    "path": "TwoModifiers",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeWeapon",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier1",
+                    "id": "f53fa247-2c83-48d7-9774-440915b24426",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "modifier2",
+                    "id": "cb0caf55-1cdf-43e6-98f1-c617a6d2d557",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
