@@ -9,12 +9,6 @@ public class WeaponUI : MonoBehaviour
 
     private bool m_toggle = true;
 
-    private void Awake()
-    {
-        m_toggle = true;
-        gameObject.SetActive(true);
-    }
-
     public void UpdateWeaponUI(GunData gunData)
     {
         gunImage.sprite = gunData.icon;
@@ -25,7 +19,7 @@ public class WeaponUI : MonoBehaviour
     {
         m_toggle = !m_toggle;
 
-        if (m_toggle)
+        if (!m_toggle)
         {
             gameObject.SetActive(false);
         }
