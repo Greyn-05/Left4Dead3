@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +17,7 @@ public class ShootingScripts : MonoBehaviour
     private bool reloading;
     public bool Fire;
 
+    public TMP_Text Bullet;
     
     public GameObject bulletSpawnPlace;
 
@@ -50,6 +52,8 @@ public class ShootingScripts : MonoBehaviour
                 AutoShooting();
             }
         }
+        Bullet.text = bulletsInTheGun + " / " + Gun.maxBulletInTheGun;
+
     }
     public void CheckAuto()
     {

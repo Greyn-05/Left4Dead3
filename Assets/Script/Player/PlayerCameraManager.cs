@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class PlayerCameraManager : MonoBehaviour
 {
 
+    public InputAction m_action;
+
     [Header("MouseSensitivity")]
     public float m_sensitivityX = 5f;
     public float m_sensitivityY = 5f;
@@ -57,11 +59,11 @@ public class PlayerCameraManager : MonoBehaviour
     }
 
 
-    public void ChangeCamera(InputAction.CallbackContext context)//시점 전환 함수
+    public void ChangeCamera()//시점 전환 함수
     {
         m_changeCamera = !m_changeCamera;
 
-        if (m_changeCamera)
+        if (!m_changeCamera)
         {
             m_camera1.transform.GetChild(0).GetComponent<Camera>().enabled = true;
             m_camera2.transform.GetChild(0).GetComponent<Camera>().enabled = false;
