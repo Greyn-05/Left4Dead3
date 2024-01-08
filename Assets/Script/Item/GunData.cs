@@ -24,7 +24,7 @@ public class GunData : ScriptableObject
     public GunType gunType;
     public GunStyle gunStyle;
     public Sprite icon;
-    public GameObject Prefab;
+    public GameObject DropPrefab; //아이템을 버렸을 때 스폰되는 프리팹
 
     [Header("Stacking")]
     public int nowBulletInTheGun; // 탄알집에 남아있는 탄알

@@ -36845,6 +36845,30 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1017807727558839252, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017807727558839252, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
+      propertyPath: m_ActionEvents.Array.data[7].m_ActionId
+      value: 9f07a3a9-5c16-4cc6-b178-087c4aeeabbf
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017807727558839252, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
+      propertyPath: m_ActionEvents.Array.data[7].m_ActionName
+      value: PlayerControl/ChangeWeapon[/Keyboard/1,/Keyboard/2]
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017807727558839252, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017807727558839252, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017807727558839252, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1714221608}
+    - target: {fileID: 1017807727558839252, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1032529493}
@@ -36853,12 +36877,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1032529493}
     - target: {fileID: 1017807727558839252, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017807727558839252, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OpenDoorInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017807727558839252, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Shooting
       objectReference: {fileID: 0}
     - target: {fileID: 1017807727558839252, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Reloading
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017807727558839252, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: InteractionManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017807727558839252, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1933953579846160274, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
       propertyPath: m_Name
@@ -36925,6 +36965,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
+--- !u!114 &1714221608 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3855026698297166612, guid: 91ddd1bee7f8ec948b651b0d06799534, type: 3}
+  m_PrefabInstance: {fileID: 1714221607}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700135274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ed1f90ac2c90db44924402f9787a5e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1716113877
 PrefabInstance:
   m_ObjectHideFlags: 0
