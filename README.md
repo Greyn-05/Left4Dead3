@@ -22,7 +22,11 @@
 * 1, 2, 3, 4번 숫자 버튼을 이용하여 무기 스왑 구현
 ![weapon swap](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/9e8e6351-b786-41a8-98f4-1a58db7d1b9b)
 
-* 
+* 총을 발사했을 때 벽에 총알이 맞을 경우 탄흔이 남도록 구현
+![pistol mark](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/7962c395-d6ed-4487-8a20-07e379f47174)![rifle mark](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/b7e6c27f-6a94-4bd6-b033-98dcab646343)![shotgun mark](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/79d27d95-afd5-4aac-bceb-504a8aa4cfbc)![sniper rifle mark](https://github.com/Noname136-rpg/Left4Dead3/assets/71596977/48223caa-922e-46b0-b438-dc5743ddde05)
+
+
+
 
 
 ## 기능 세부 설명
