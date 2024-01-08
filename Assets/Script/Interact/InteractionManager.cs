@@ -11,6 +11,13 @@ public interface IInteractable
     string GetInteractPrompt();
     void OnInteract();
 }
+public interface IOpenDoor
+{
+    bool IsOpen { get; set; }
+
+    void OpenThisDoor();
+    void CloseThisDoor();
+}
 
 public class InteractionManager : MonoBehaviour
 {
@@ -21,6 +28,7 @@ public class InteractionManager : MonoBehaviour
 
     private GameObject curInteractGameobject;
     private IInteractable curInteractable;
+    private IOpenDoor currentDoor;
 
     public Text interactText;
     private Camera _camera;
@@ -33,6 +41,7 @@ public class InteractionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Time.time - lastCheckTime > checkRate)
         {
             lastCheckTime = Time.time;
@@ -40,19 +49,29 @@ public class InteractionManager : MonoBehaviour
             Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
             RaycastHit hit;
 
+            Debug.DrawRay(_camera.transform.position, _camera.transform.forward*maxCheckDistance, Color.green);
+
             if (Physics.Raycast(ray, out hit, maxCheckDistance, layerMask))
             {
                 if (hit.collider.gameObject != curInteractGameobject)
                 {
                     curInteractGameobject = hit.collider.gameObject;
-                    curInteractable = hit.collider.GetComponent<IInteractable>();
-                    SetPromptText();
+                    if (curInteractGameobject.TryGetComponent<IInteractable>(out curInteractable))
+                    {
+                        SetPromptText();
+                    }
+                    else if (curInteractGameobject.TryGetComponent<IOpenDoor>(out currentDoor))
+                    {
+                        SetDoorOpenTxt();
+                    }
+
                 }
             }
             else
             {
                 curInteractGameobject = null;
                 curInteractable = null;
+                currentDoor = null;
                 //interactText.gameObject.SetActive(false);
             }
         }
@@ -60,10 +79,20 @@ public class InteractionManager : MonoBehaviour
 
     private void SetPromptText()
     {
-        interactText.gameObject.SetActive(true);
-        Debug.Log("setactive");
-        interactText.text = string.Format("<b>[E]</b> {0}", curInteractable.GetInteractPrompt());
-        Debug.Log(interactText.text);        
+        //interactText.gameObject.SetActive(true);
+        //interactText.text = string.Format("<b>[E]</b> {0}", curInteractable.GetInteractPrompt());
+    }
+    private void SetDoorOpenTxt()
+    {
+        //interactText.gameObject.SetActive(true);
+        if (!currentDoor.IsOpen)
+        {
+            //interactText.text = "<b>[E]</b> 문 열기";
+        }
+        else
+        {
+            //interactText.text = "<b>[E]</b> 문 닫기";
+        }
     }
 
     public void OnInteractInput(InputAction.CallbackContext callbackContext)
@@ -73,7 +102,24 @@ public class InteractionManager : MonoBehaviour
             curInteractable.OnInteract();
             curInteractGameobject = null;
             curInteractable = null;
-            interactText.gameObject.SetActive(false);
+            //interactText.gameObject.SetActive(false);
+        }
+    }
+    public void OpenDoorInput(InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.phase == InputActionPhase.Started && currentDoor != null)
+        {
+            if (!currentDoor.IsOpen)
+            {
+                currentDoor.OpenThisDoor();
+            }
+            else
+            {
+                currentDoor.CloseThisDoor();
+            }
+            curInteractGameobject = null;
+            currentDoor = null;
+            //interactText.gameObject.SetActive(false);
         }
     }
 }

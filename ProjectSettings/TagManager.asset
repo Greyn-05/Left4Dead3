@@ -7,9 +7,6 @@ TagManager:
   - Third Person Camera
   - Enemy
   - LevelPart
-  - Weapon
-  - BulletSpawn
-  - SecondCamera
   - First Person Camera
   - Weapon
   - BulletSpawn
@@ -19,12 +16,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Gun
   - Water
   - UI
   - Player
   - Enemy
-  - 
+  - Door
   - 
   - 
   - 

@@ -6,40 +6,48 @@ using UnityEngine.InputSystem;
 
 public class EquipManager : MonoBehaviour
 {
-    public Equip curEquip;
-    public Transform equipParent;
+    public GameObject Pistol;
+    public GameObject Rifle;
+    public GameObject Shotgun;
+    public GameObject Sniper;
 
-    //private PlayerController controller;
-
-    // singleton
-    public static EquipManager instance;
-
-    private void Awake()
+    public void ChangePistol (InputAction.CallbackContext callbackContext)
     {
-        instance = this;
-        //controller = GetComponent<PlayerController>();
+        if (callbackContext.phase == InputActionPhase.Started)
+        {
+            Pistol.SetActive (true);
+            Rifle.SetActive(false); 
+            Shotgun.SetActive (false); 
+            Sniper.SetActive (false);
+        }
+    }
+    public void ChangeRifle (InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.phase == InputActionPhase.Started)
+        {
+            Pistol.SetActive(false);
+            Rifle.SetActive(true);
+            Shotgun.SetActive(false);
+            Sniper.SetActive(false);
+        }
+    }public void ChangeShotgun (InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.phase == InputActionPhase.Started)
+        {
+            Pistol.SetActive(false);
+            Rifle.SetActive(false);
+            Shotgun.SetActive(true);
+            Sniper.SetActive(false);
+        }
+    }public void ChangeSniper (InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.phase == InputActionPhase.Started)
+        {
+            Pistol.SetActive(false);
+            Rifle.SetActive(false);
+            Shotgun.SetActive(false);
+            Sniper.SetActive(true);
+        }
     }
 
-    //public void OnAttackInput(InputAction.CallbackContext context)
-    //{
-    //    if (context.phase == InputActionPhase.Performed && curEquip != null && controller.canLook)
-    //    {
-    //        curEquip.OnAttackInput();
-    //    }
-    //}
-
-    //public void EquipNew(GunData item)
-    //{
-    //    UnEquip();
-    //    curEquip = Instantiate(item.Prefab, equipParent).GetComponent<Equip>();
-    //}
-
-    //public void UnEquip()
-    //{
-    //    if (curEquip != null)
-    //    {
-    //        Destroy(curEquip.gameObject);
-    //        curEquip = null;
-    //    }
-    //}
 }

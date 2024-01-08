@@ -36,6 +36,9 @@ public class EnemyBehavior : MonoBehaviour
     public Transform TargetPlayer;
     private EnemyAnimationController animationController;
     private AudioSource Audio;
+    private BoxCollider boxCollider;
+    private CharacterController characterController;
+    private EnemyBehavior enemyBehavior;
     public List<AudioClip> Walksound = new List<AudioClip> { };
     public List<AudioClip> Attacksound = new List<AudioClip> { };
     public List<AudioClip> Hitsound = new List<AudioClip> { };
@@ -49,6 +52,8 @@ public class EnemyBehavior : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         animationController = GetComponent<EnemyAnimationController>();
         Audio = GetComponent<AudioSource>();
+        boxCollider = GetComponent<BoxCollider>();
+        characterController = GetComponent<CharacterController>();
 
         navMeshAgent.updateRotation = false;
     }
@@ -77,14 +82,13 @@ public class EnemyBehavior : MonoBehaviour
             return;
         }
 
-        if(TestCoroutine != null)
+        /*if(TestCoroutine != null)
         {
             StopCoroutine(TestCoroutine);
-        }
-        //StopCoroutine(enemyState.ToString());
+        }*/
+        StopCoroutine(enemyState.ToString());
         enemyState = newState;
-
-        TestCoroutine = StartCoroutine(enemyState.ToString());
+        StartCoroutine(enemyState.ToString());
     }
 
     private IEnumerator idle()
@@ -231,7 +235,7 @@ public class EnemyBehavior : MonoBehaviour
         }
         else if(distance >= QuitpursuitRange)
         {
-            //ChangeState(EnemyBehaviorState.wander);
+            ChangeState(EnemyBehaviorState.wander);
         }
     }
 
@@ -286,18 +290,27 @@ public class EnemyBehavior : MonoBehaviour
 
     public void getHit(int Damage)
     {
-        enemyHP -= Damage;
-
-        if (enemyHP <= 0)
+        if(enemyState != EnemyBehaviorState.death)
         {
-            ChangeState(EnemyBehaviorState.death);
+            enemyHP -= Damage;
+
+            if ((enemyHP <= 0))
+            {
+                enemyState = EnemyBehaviorState.death;
+                gameObject.tag = "Untagged";
+                StopAllCoroutines();
+                StartCoroutine("death");
+            }
         }
     }
 
     private IEnumerator death()
     {
         animationController.Play("Zombie Death", -1, 0);
-        yield return new WaitForSeconds(3f);
+        boxCollider.enabled = false;
+        navMeshAgent.enabled = false;
+        characterController.enabled = false;
+        yield return null;
     }
 
     private void OnDrawGizmos()
@@ -313,7 +326,6 @@ public class EnemyBehavior : MonoBehaviour
 
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, AttackRange);*/
-
     }
     
 }
