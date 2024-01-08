@@ -6,10 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Test/Seyeon_Start.unity
-    guid: 4a41b8586ea552a40938edcf29320b60
-  - enabled: 1
-    path: Assets/Scenes/Test/Seyeon_UI.unity
-    guid: 5534beea7a66a47489694f6e9363e12b
+    path: Assets/Scenes/Main/MainScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 490c87c153c39c744a3f512bd7d2751d, type: 2}

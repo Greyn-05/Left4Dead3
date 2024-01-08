@@ -121,13 +121,11 @@ public class SettingMenu : MonoBehaviour
 		{
             SettingCanvas.SetActive(true);
 			PlayerManager.Instance.ToggleCamera();
-			Time.timeScale = 0;
         }
 		else
 		{
             SettingCanvas.SetActive(false);
             PlayerManager.Instance.ToggleCamera();
-            Time.timeScale = 1;
         }
     }
 
@@ -238,7 +236,7 @@ public class SettingMenu : MonoBehaviour
 
     public void LoadScene()
 	{
-        SceneManager.LoadScene("Seyeon_Start"); // 씬 이름 추후 수정 필
+        SceneManager.LoadScene("MainScene"); // 씬 이름 추후 수정 필
 	}
 
 	public GameObject GetLineCrossHairObject(int index)
