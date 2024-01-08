@@ -38,6 +38,7 @@ public class EnemyBehavior : MonoBehaviour
     private AudioSource Audio;
     private BoxCollider boxCollider;
     private CharacterController characterController;
+    private EnemyBehavior enemyBehavior;
     public List<AudioClip> Walksound = new List<AudioClip> { };
     public List<AudioClip> Attacksound = new List<AudioClip> { };
     public List<AudioClip> Hitsound = new List<AudioClip> { };
@@ -289,11 +290,17 @@ public class EnemyBehavior : MonoBehaviour
 
     public void getHit(int Damage)
     {
-        enemyHP -= Damage;
-
-        if (enemyHP <= 0)
+        if(enemyState != EnemyBehaviorState.death)
         {
-            ChangeState(EnemyBehaviorState.death);
+            enemyHP -= Damage;
+
+            if ((enemyHP <= 0))
+            {
+                enemyState = EnemyBehaviorState.death;
+                gameObject.tag = "Untagged";
+                StopAllCoroutines();
+                StartCoroutine("death");
+            }
         }
     }
 
@@ -303,7 +310,7 @@ public class EnemyBehavior : MonoBehaviour
         boxCollider.enabled = false;
         navMeshAgent.enabled = false;
         characterController.enabled = false;
-        yield return new WaitForSeconds(3f);
+        yield return null;
     }
 
     private void OnDrawGizmos()
@@ -319,7 +326,6 @@ public class EnemyBehavior : MonoBehaviour
 
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, AttackRange);*/
-
     }
     
 }

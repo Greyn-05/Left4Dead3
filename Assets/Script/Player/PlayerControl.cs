@@ -18,9 +18,6 @@ public class PlayerControl : MonoBehaviour
     private Vector3 m_movement;//캐릭터 Transform 기준 움직이려는 방향
     private Vector3 m_movePosition;//World Transform 기준 움직이게 하려는 방향
 
-    string InputH = "Horizontal";
-    string InputV = "Vertical";
-
     private float m_gravity = -9.8f;
 
     private void Start()
