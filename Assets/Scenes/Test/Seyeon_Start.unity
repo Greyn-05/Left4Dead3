@@ -448,7 +448,7 @@ GameObject:
   - component: {fileID: 3486048824831206985}
   - component: {fileID: 4784066279363479070}
   m_Layer: 5
-  m_Name: Btn_Assign
+  m_Name: Btn_Shoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 4576431521933842421}
   - component: {fileID: 222503196585028775}
   m_Layer: 0
-  m_Name: Text (12)
+  m_Name: Reload
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10991,7 +10991,7 @@ GameObject:
   - component: {fileID: 2203172605712342763}
   - component: {fileID: 2892932005079056573}
   m_Layer: 5
-  m_Name: Btn_Assign
+  m_Name: Btn_Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15616,7 +15616,7 @@ GameObject:
   - component: {fileID: 6242234821048287385}
   - component: {fileID: 5398489848497157502}
   m_Layer: 0
-  m_Name: Text (3)
+  m_Name: Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17802,6 +17802,7 @@ GameObject:
   - component: {fileID: 8994145228914216142}
   - component: {fileID: 1449753988976753471}
   - component: {fileID: 6369885679182951493}
+  - component: {fileID: 8994145228914216143}
   m_Layer: 5
   m_Name: PanelKeyBindings
   m_TagString: Untagged
@@ -21248,7 +21249,7 @@ GameObject:
   - component: {fileID: 6938088363665746294}
   - component: {fileID: 7538522540794270769}
   m_Layer: 5
-  m_Name: Btn_Assign
+  m_Name: Btn_Interact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24189,7 +24190,7 @@ GameObject:
   - component: {fileID: 538526121564545434}
   - component: {fileID: 8030445050870427224}
   m_Layer: 5
-  m_Name: Btn_Assign
+  m_Name: Btn_Reload
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26260,7 +26261,7 @@ GameObject:
   - component: {fileID: 4118547688935805500}
   - component: {fileID: 8666554092792112711}
   m_Layer: 5
-  m_Name: Btn_Assign
+  m_Name: Btn_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30697,7 +30698,7 @@ GameObject:
   - component: {fileID: 4117802929815788122}
   - component: {fileID: 8205843762083374831}
   m_Layer: 5
-  m_Name: Btn_Assign
+  m_Name: Btn_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31394,7 +31395,7 @@ GameObject:
   - component: {fileID: 4203855516971081277}
   - component: {fileID: 6292254937878554663}
   m_Layer: 0
-  m_Name: Text (8)
+  m_Name: Jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33196,7 +33197,7 @@ GameObject:
   - component: {fileID: 768171113039972991}
   - component: {fileID: 2513202473164106796}
   m_Layer: 0
-  m_Name: Text (11)
+  m_Name: Shoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36314,7 +36315,7 @@ GameObject:
   - component: {fileID: 6999967728672083735}
   - component: {fileID: 591108424873206665}
   m_Layer: 5
-  m_Name: Btn_Assign
+  m_Name: Btn_Jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39719,7 +39720,7 @@ GameObject:
   - component: {fileID: 7923441046218745072}
   - component: {fileID: 380833345110347559}
   m_Layer: 0
-  m_Name: Text (5)
+  m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39784,7 +39785,7 @@ GameObject:
   - component: {fileID: 6532112994587970881}
   - component: {fileID: 3054920597831939238}
   m_Layer: 0
-  m_Name: Text
+  m_Name: Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41892,7 +41893,7 @@ GameObject:
   - component: {fileID: 4161544322476434613}
   - component: {fileID: 8237133532048419192}
   m_Layer: 0
-  m_Name: Text (13)
+  m_Name: Interact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43178,7 +43179,7 @@ GameObject:
   - component: {fileID: 5410332876579534255}
   - component: {fileID: 7640878835055564047}
   m_Layer: 0
-  m_Name: Text (6)
+  m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43793,7 +43794,7 @@ GameObject:
   - component: {fileID: 595609364780948047}
   - component: {fileID: 9042746544129110525}
   m_Layer: 5
-  m_Name: Btn_Assign
+  m_Name: Btn_Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44308,6 +44309,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3597575881074448115}
   m_CullTransparentMesh: 0
+--- !u!114 &8994145228914216143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3597575881074448115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0635a8177c852f74c8848746d87f27f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveAction: {fileID: 4646269014762683087, guid: 166634f1dacd88043ac578e57c37a899, type: 3}
+  interactAction: {fileID: 3432283456000647900, guid: 166634f1dacd88043ac578e57c37a899, type: 3}
+  reloadAction: {fileID: -2747078808778862587, guid: 166634f1dacd88043ac578e57c37a899, type: 3}
+  jumpAction: {fileID: 5963708461181125471, guid: 166634f1dacd88043ac578e57c37a899, type: 3}
+  bindingTextUp: {fileID: 7498610786812823570}
+  bindingTextDown: {fileID: 2296300634176474667}
+  bindingTextLeft: {fileID: 3631545115220298528}
+  bindingTextRight: {fileID: 8127285749633584499}
+  interactBindingText: {fileID: 4746658257180773186}
+  reloadBindingText: {fileID: 6774905139034410142}
+  jumpBindingText: {fileID: 2132295128039356496}
+  startRebindingObject: {fileID: 3597575881074448115}
+  waitingForInputObject: {fileID: 5464033521621116402}
 --- !u!222 &8998446527357002442
 CanvasRenderer:
   m_ObjectHideFlags: 0
