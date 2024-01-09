@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Audio;
 
 namespace SlimUI.ModernMenu
 {
@@ -48,17 +49,20 @@ namespace SlimUI.ModernMenu
 
 		// sliders
 		public GameObject musicSlider;
+		public GameObject effectSlider;
 		public GameObject sensitivityXSlider;
 		public GameObject sensitivityYSlider;
 		public GameObject mouseSmoothSlider;
 
-		private float sliderValue = 0.0f;
+		private float musicSliderValue = 0.0f;
+		private float effectSliderValue = 0.0f;
 		private float sliderValueXSensitivity = 0.0f;
 		private float sliderValueYSensitivity = 0.0f;
 		private float sliderValueSmoothing = 0.0f;
-		
 
-		public void  Start ()
+        public AudioMixer MasterMixer;
+
+        public void  Start ()
 		{
 			// check difficulty
 			if(PlayerPrefs.GetInt("NormalDifficulty") == 1)
@@ -74,7 +78,11 @@ namespace SlimUI.ModernMenu
 
 			// check slider values
 			musicSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("MusicVolume");
-			sensitivityXSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("XSensitivity");
+            SetVolume("Music", musicSlider.GetComponent<Slider>().value);
+			effectSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("EffectVolume");
+            SetVolume("SFX", effectSlider.GetComponent<Slider>().value);
+
+            sensitivityXSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("XSensitivity");
 			sensitivityYSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("YSensitivity");
 			mouseSmoothSlider.GetComponent<Slider>().value = PlayerPrefs.GetFloat("MouseSmoothing");
 
@@ -231,13 +239,26 @@ namespace SlimUI.ModernMenu
 
 		public void Update ()
 		{
-			//sliderValue = musicSlider.GetComponent<Slider>().value;
+			musicSliderValue = musicSlider.GetComponent<Slider>().value;
+			SetVolume("Music", musicSliderValue);
+			effectSliderValue = effectSlider.GetComponent<Slider>().value;
+			SetVolume("SFX", effectSliderValue);
 			sliderValueXSensitivity = sensitivityXSlider.GetComponent<Slider>().value;
 			sliderValueYSensitivity = sensitivityYSlider.GetComponent<Slider>().value;
 			sliderValueSmoothing = mouseSmoothSlider.GetComponent<Slider>().value;
 		}
-
-		public void FullScreen ()
+        private void SetVolume(string name, float volume)
+        {
+            if (volume == -40f)
+            {
+                MasterMixer.SetFloat(name, -80);
+            }
+            else
+            {
+                MasterMixer.SetFloat(name, volume);
+            }
+        }
+        public void FullScreen ()
 		{
 			Screen.fullScreen = !Screen.fullScreen;
 
@@ -253,8 +274,12 @@ namespace SlimUI.ModernMenu
 
 		public void MusicSlider ()
 		{
-			//PlayerPrefs.SetFloat("MusicVolume", sliderValue);
-			PlayerPrefs.SetFloat("MusicVolume", musicSlider.GetComponent<Slider>().value);
+			PlayerPrefs.SetFloat("MusicVolume", musicSliderValue);
+			//PlayerPrefs.SetFloat("MusicVolume", musicSlider.GetComponent<Slider>().value);
+		}
+		public void EffectSlider ()
+		{
+			PlayerPrefs.SetFloat("EffectVolume", effectSliderValue);
 		}
 
 		public void SensitivityXSlider ()

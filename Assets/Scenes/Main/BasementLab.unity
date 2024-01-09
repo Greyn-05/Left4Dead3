@@ -47974,10 +47974,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 4840496030330449310}
   m_HandleRect: {fileID: 2211527969216168441}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -40
+  m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -57554,16 +57554,16 @@ MonoBehaviour:
   m_FillRect: {fileID: 4644544624242066896}
   m_HandleRect: {fileID: 2444860242155875829}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -40
+  m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8176145976205076242}
         m_TargetAssemblyTypeName: SlimUI.ModernMenu.UISettingsManager, Assembly-CSharp
-        m_MethodName: MusicSlider
+        m_MethodName: EffectSlider
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -59949,8 +59949,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 8176145976205076242}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: MusicSlider
+          m_TargetAssemblyTypeName: SlimUI.ModernMenu.UISettingsManager, Assembly-CSharp
+          m_MethodName: EffectSlider
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -81657,7 +81657,7 @@ GameObject:
   - component: {fileID: 1342457396133562661}
   - component: {fileID: 5123656574361285215}
   m_Layer: 0
-  m_Name: PlayerCamera (1)
+  m_Name: PlayerCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84366,9 +84366,11 @@ MonoBehaviour:
   difficultyhardcoretextLINE: {fileID: 319678988035363110}
   invertmousetext: {fileID: 3001367142828426527}
   musicSlider: {fileID: 8418676451251033344}
+  effectSlider: {fileID: 3590635831977759665}
   sensitivityXSlider: {fileID: 512058971133406157}
   sensitivityYSlider: {fileID: 8188509761873805589}
   mouseSmoothSlider: {fileID: 6912960190190270148}
+  MasterMixer: {fileID: 24100000, guid: 204ae77320b536d459d12c2126255a73, type: 2}
 --- !u!114 &8180869810026720693
 MonoBehaviour:
   m_ObjectHideFlags: 0

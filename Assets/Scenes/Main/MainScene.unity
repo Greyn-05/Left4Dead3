@@ -323,7 +323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 193825036032886212, guid: 4f852274a6f680f4b824a12f1d758c85, type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 426076821168893602, guid: 4f852274a6f680f4b824a12f1d758c85, type: 3}
       propertyPath: m_fontColor32.rgba
